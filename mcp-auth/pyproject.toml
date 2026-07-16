@@ -15,6 +15,11 @@ dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+filterwarnings = [
+    # Starlette nudges you toward httpx2 for its TestClient. Not our problem,
+    # and not something a student should see on every run.
+    "ignore::starlette.exceptions.StarletteDeprecationWarning",
+]
 
 [build-system]
 requires = ["hatchling"]
