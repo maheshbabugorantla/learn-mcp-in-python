@@ -1,5 +1,8 @@
 # MCP Fundamentals — in Python
 
+> Start here. When you're done, [**mcp-auth**](../mcp-auth) takes this same
+> journal, puts it on the internet, and gives it users.
+
 Learn the **Model Context Protocol** by building a real MCP server: EpicMe, a
 personal journal that an AI app can read, search, tag, and reason about.
 
