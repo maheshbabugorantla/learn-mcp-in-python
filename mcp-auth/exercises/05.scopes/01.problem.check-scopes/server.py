@@ -32,11 +32,13 @@ from auth import fetch_user, require_auth_info
 from epicme.db import DB, Entry
 from epicme.provider import USERS
 
+
 # TODO: Check scopes before doing the work.
 #
 # Write a `require_scope(*scopes: Scope) -> AuthInfo` helper that calls
 # `require_auth_info()`, checks it with `validate_scopes`, and raises a
-# ValueError naming the missing scope if it doesn't hold.
+# ValueError naming the missing scope if it doesn't hold. You'll need to import
+# `Scope` and `validate_scopes` from `auth` alongside `require_auth_info`.
 #
 # Then swap `require_auth_info()` for `require_scope(...)` at the top of each
 # tool, resource and prompt:
@@ -221,6 +223,8 @@ def add_tag_to_entry(
     description="The currently authenticated user",
     mime_type="application/json",
 )
+
+
 async def current_user() -> str:
     auth_info = require_auth_info()
     user = await fetch_user(auth_info)

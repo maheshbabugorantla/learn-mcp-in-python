@@ -7,7 +7,6 @@ Right now it can:
   - turn away requests with no usable token     (02.init)
   - turn an opaque token into a user            (03.auth-info)
   - carry that user to your tools               (04.user)
-  - decide whether the user is allowed to       (05.scopes)
 """
 
 from __future__ import annotations
@@ -23,6 +22,7 @@ from epicme.client import AUTH_SERVER_URL, get_http
 
 
 # --- what this server can be asked for ------------------------------------
+
 
 # TODO: List every scope this server understands.
 #
@@ -77,6 +77,7 @@ IntrospectionResponse = Annotated[
 ]
 _introspection_response = TypeAdapter(IntrospectionResponse)
 
+
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     """Turn an `Authorization` header into an `AuthInfo`, or `None`.
 
@@ -109,6 +110,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
         scopes=data.scope.split(),
         user_id=data.sub,
     )
+
 
 async def fetch_user(auth_info: AuthInfo) -> User | None:
     """Ask the authorization server who this token belongs to."""
@@ -151,6 +153,7 @@ def require_auth_info() -> AuthInfo:
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.
@@ -213,6 +216,7 @@ def handle_unauthorized(request: Request) -> Response:
         status_code=401,
         headers={"WWW-Authenticate": ", ".join(auth_params)},
     )
+
 
 # TODO: Check whether a token carries the scopes something needs.
 #

@@ -15,6 +15,7 @@ from starlette.routing import Mount, Route
 from server import mcp
 from utils import WithCors
 
+
 # TODO: Decide which requests get CORS headers.
 #
 # Write `def get_cors_headers(request: Request) -> Mapping[str, str] | None`.
@@ -43,6 +44,7 @@ from utils import WithCors
 
 def get_cors_headers(request: Request) -> Mapping[str, str] | None:
     return None
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

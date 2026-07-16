@@ -61,6 +61,7 @@ IntrospectionResponse = Annotated[
 ]
 _introspection_response = TypeAdapter(IntrospectionResponse)
 
+
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     """Turn an `Authorization` header into an `AuthInfo`, or `None`.
 
@@ -93,6 +94,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
         scopes=data.scope.split(),
         user_id=data.sub,
     )
+
 
 async def fetch_user(auth_info: AuthInfo) -> User | None:
     """Ask the authorization server who this token belongs to."""
@@ -135,6 +137,7 @@ def require_auth_info() -> AuthInfo:
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.

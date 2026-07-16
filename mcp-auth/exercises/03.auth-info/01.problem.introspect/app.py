@@ -46,6 +46,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Stop trusting the header and start checking the token.
 #
 # Right now this lets anyone in who sends *any* Authorization header. Replace
@@ -55,6 +56,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 #   if auth_info is None:
 #       return handle_unauthorized(request)
 #   return None
+
 
 async def authorize(request: Request) -> Response | None:
     """Guard `/mcp`. Return a response to reject, or `None` to allow.
@@ -67,6 +69,7 @@ async def authorize(request: Request) -> Response | None:
         return handle_unauthorized(request)
 
     return None
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

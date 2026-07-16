@@ -6,7 +6,6 @@ Right now it can:
   - describe itself to clients                  (01.discovery)
   - turn away requests with no usable token     (02.init)
   - turn an opaque token into a user            (03.auth-info)
-  - carry that user to your tools               (04.user)
 """
 
 from __future__ import annotations
@@ -53,6 +52,7 @@ IntrospectionResponse = Annotated[
 ]
 _introspection_response = TypeAdapter(IntrospectionResponse)
 
+
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     """Turn an `Authorization` header into an `AuthInfo`, or `None`.
 
@@ -89,6 +89,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
 
 # --- carrying the caller into your tools ----------------------------------
 
+
 # TODO: Make the caller reachable from your tools.
 #
 # A tool is a plain function. Nobody passes it the request, so it has no way to
@@ -112,6 +113,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.

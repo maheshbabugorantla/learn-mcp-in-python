@@ -17,6 +17,7 @@ from epicme.client import AUTH_SERVER_URL, get_http
 
 # --- discovery: how a client finds its way in -----------------------------
 
+
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.
 
@@ -37,6 +38,7 @@ def handle_oauth_protected_resource_request(request: Request) -> Response:
         }
     )
 
+
 # TODO: Work out where this server's protected resource metadata lives.
 #
 #   def resource_metadata_url(request: Request) -> str:
@@ -49,6 +51,7 @@ def handle_oauth_protected_resource_request(request: Request) -> Response:
 
 
 # --- saying no, usefully --------------------------------------------------
+
 
 # TODO: Point the client at the instructions.
 #

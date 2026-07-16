@@ -52,6 +52,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Turn away tokens that can't do anything here.
 #
 # A token can be perfectly valid and still useless — if it carries none of the
@@ -62,6 +63,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 #
 #   if not has_sufficient_scope(auth_info):
 #       return handle_insufficient_scope()
+
 
 async def authorize(request: Request) -> Response | None:
     """Guard `/mcp`. Return a response to reject, or `None` to allow.
@@ -82,6 +84,7 @@ async def authorize(request: Request) -> Response | None:
     current_auth_info.set(auth_info)
 
     return None
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

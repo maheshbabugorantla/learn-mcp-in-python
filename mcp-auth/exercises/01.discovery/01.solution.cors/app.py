@@ -34,6 +34,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 async def healthcheck(request: Request) -> Response:
     return Response("OK")
 

@@ -1,8 +1,4 @@
 """Everything your resource server knows about who's calling.
-
-Right now it can:
-
-  - say where the authorization server is       (01.discovery)
 """
 
 from __future__ import annotations
@@ -14,6 +10,7 @@ from epicme.client import get_http
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 # TODO: Serve the authorization server's metadata.
 #

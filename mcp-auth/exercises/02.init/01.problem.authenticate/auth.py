@@ -4,7 +4,6 @@ Right now it can:
 
   - say where the authorization server is       (01.discovery)
   - describe itself to clients                  (01.discovery)
-  - turn away requests with no usable token     (02.init)
 """
 
 from __future__ import annotations
@@ -16,6 +15,7 @@ from epicme.client import AUTH_SERVER_URL, get_http
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.
@@ -39,6 +39,7 @@ def handle_oauth_protected_resource_request(request: Request) -> Response:
 
 
 # --- saying no, usefully --------------------------------------------------
+
 
 # TODO: Say no, in a way the client can act on.
 #

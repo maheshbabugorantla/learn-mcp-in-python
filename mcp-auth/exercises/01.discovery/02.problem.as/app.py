@@ -34,6 +34,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Serve the metadata you just wrote a handler for.
 #
 # Add a route to `routes` below:
@@ -44,6 +45,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 #   ),
 #
 # and import it from `auth` at the top.
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

@@ -30,6 +30,7 @@ class AuthInfo(BaseModel):
     scopes: list[str]
     user_id: str
 
+
 # TODO: Teach these models about `active`.
 #
 # Right now `ActiveToken` describes a *live* token and nothing else, so an
@@ -61,6 +62,7 @@ class ActiveToken(BaseModel):
 
 
 _introspection_response = TypeAdapter(ActiveToken)
+
 
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     """Turn an `Authorization` header into an `AuthInfo`, or `None`.
@@ -99,6 +101,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.

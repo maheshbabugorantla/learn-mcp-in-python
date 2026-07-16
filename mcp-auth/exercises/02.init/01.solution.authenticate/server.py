@@ -31,10 +31,9 @@ for user_id in USERS:
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage your personal journal.",
-    # `stateless_http=True` is load-bearing, not a preference. It makes the
-    # server handle each request in the task that received it, which is what
-    # lets the ContextVar set by the auth middleware still be readable inside
-    # the tools below. Turn it off and every tool stops knowing who's calling.
+    # Each request is handled on its own, in the task that received it, with
+    # no session carried between them. This setting matters more than it
+    # looks — `04.user` is where you find out why.
     stateless_http=True,
     json_response=True,
     # Serve the MCP endpoint at the root of *this* app, so `app.py` can mount

@@ -5,7 +5,6 @@ Right now it can:
   - say where the authorization server is       (01.discovery)
   - describe itself to clients                  (01.discovery)
   - turn away requests with no usable token     (02.init)
-  - turn an opaque token into a user            (03.auth-info)
 """
 
 from __future__ import annotations
@@ -28,6 +27,7 @@ class AuthInfo(BaseModel):
     scopes: list[str]
     user_id: str
 
+
 # TODO: Model the introspection response.
 #
 # The authorization server answers with JSON. Describe the parts you need so
@@ -39,6 +39,7 @@ class AuthInfo(BaseModel):
 #       sub: str         # the user id
 #
 # Then: _introspection_response = TypeAdapter(ActiveToken)
+
 
 # TODO: Turn an access token into an AuthInfo.
 #
@@ -58,11 +59,14 @@ class AuthInfo(BaseModel):
 #
 # Return None for anything that isn't a usable token — the caller doesn't get to
 # know which way it failed.
+
+
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     raise NotImplementedError("Follow the TODO above")
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.

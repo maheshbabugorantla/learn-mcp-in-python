@@ -61,6 +61,7 @@ IntrospectionResponse = Annotated[
 ]
 _introspection_response = TypeAdapter(IntrospectionResponse)
 
+
 async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
     """Turn an `Authorization` header into an `AuthInfo`, or `None`.
 
@@ -94,6 +95,7 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
         user_id=data.sub,
     )
 
+
 # TODO: Fetch the user's profile.
 #
 # Introspection told you the user's *id*. It didn't tell you their name. For
@@ -109,6 +111,8 @@ async def resolve_auth_info(auth_header: str | None) -> AuthInfo | None:
 #
 # Note you send the *user's* token, not a key of your own. The authorization
 # server hands back that user's profile and no one else's.
+
+
 async def fetch_user(auth_info: AuthInfo) -> User | None:
     raise NotImplementedError("Follow the TODO above")
 
@@ -144,6 +148,7 @@ def require_auth_info() -> AuthInfo:
 
 
 # --- discovery: how a client finds its way in -----------------------------
+
 
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.

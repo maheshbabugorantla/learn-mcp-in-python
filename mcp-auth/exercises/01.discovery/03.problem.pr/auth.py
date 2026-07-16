@@ -3,7 +3,6 @@
 Right now it can:
 
   - say where the authorization server is       (01.discovery)
-  - describe itself to clients                  (01.discovery)
 """
 
 from __future__ import annotations
@@ -16,6 +15,7 @@ from epicme.client import AUTH_SERVER_URL, get_http
 
 # --- discovery: how a client finds its way in -----------------------------
 
+
 async def handle_oauth_authorization_server_request(request: Request) -> Response:
     """Pass the authorization server's metadata along to whoever asks.
 
@@ -25,6 +25,7 @@ async def handle_oauth_authorization_server_request(request: Request) -> Respons
     """
     response = await get_http().get("/.well-known/oauth-authorization-server")
     return JSONResponse(response.json())
+
 
 # TODO: Describe this resource server.
 #

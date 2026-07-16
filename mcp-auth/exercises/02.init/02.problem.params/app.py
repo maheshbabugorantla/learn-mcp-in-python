@@ -46,6 +46,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 async def authorize(request: Request) -> Response | None:
     """Guard `/mcp`. Return a response to reject, or `None` to allow.
 
@@ -57,6 +58,7 @@ async def authorize(request: Request) -> Response | None:
         return handle_unauthorized(request)
 
     return None
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

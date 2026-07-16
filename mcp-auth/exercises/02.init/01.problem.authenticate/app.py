@@ -35,6 +35,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Guard /mcp.
 #
 # Write `async def authorize(request: Request) -> Response | None`. Return a
@@ -52,6 +53,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 #
 # Then wire it up: wrap the mounted MCP app in `WithAuth(..., authorize)` down
 # in `routes` below.
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

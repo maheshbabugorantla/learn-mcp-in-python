@@ -51,6 +51,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Remember who's calling.
 #
 # You resolve the caller here and then throw them away, which is why every tool
@@ -64,6 +65,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 # Then `require_auth_info()` works inside your tools, and `server.py` can serve
 # the right person's journal.
 
+
 async def authorize(request: Request) -> Response | None:
     """Guard `/mcp`. Return a response to reject, or `None` to allow.
 
@@ -76,6 +78,7 @@ async def authorize(request: Request) -> Response | None:
         return handle_unauthorized(request)
 
     return None
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

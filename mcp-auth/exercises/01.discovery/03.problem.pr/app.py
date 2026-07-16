@@ -35,6 +35,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
         "Access-Control-Allow-Headers": "mcp-protocol-version",
     }
 
+
 # TODO: Serve your protected resource metadata.
 #
 # Add a route to `routes` below:
@@ -46,6 +47,7 @@ def get_cors_headers(request: Request) -> Mapping[str, str] | None:
 #
 # and import it from `auth` at the top. Note the path ends in `/mcp` — the
 # metadata describes one specific resource, not the whole host.
+
 
 async def healthcheck(request: Request) -> Response:
     return Response("OK")

@@ -214,6 +214,8 @@ def add_tag_to_entry(
     description="The currently authenticated user",
     mime_type="application/json",
 )
+
+
 async def current_user() -> str:
     auth_info = require_scope("user:read")
     user = await fetch_user(auth_info)
