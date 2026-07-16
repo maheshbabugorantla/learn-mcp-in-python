@@ -1,0 +1,23 @@
+[project]
+name = "epicme-mcp-python"
+version = "1.0.0"
+description = "Learn the Model Context Protocol by building an MCP server in Python"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-only" }
+dependencies = [
+    "mcp[cli]==1.28.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["exercises"]
+python_files = ["test_*.py"]
+
+[tool.uv]
+package = false
