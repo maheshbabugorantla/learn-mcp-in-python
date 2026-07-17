@@ -1,7 +1,9 @@
 # MCP Fundamentals — in Python
 
-> Start here. When you're done, [**mcp-auth**](../mcp-auth) takes this same
-> journal, puts it on the internet, and gives it users.
+> Start here. When you're done, two courses build on this same journal, and you
+> can take them in either order: [**mcp-auth**](../mcp-auth) puts it on the
+> internet and gives it users, and [**mcp-ui**](../mcp-ui) gives it a face —
+> tools that send UI a client can render.
 
 Learn the **Model Context Protocol** by building a real MCP server: EpicMe, a
 personal journal that an AI app can read, search, tag, and reason about.
