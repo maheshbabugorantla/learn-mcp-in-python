@@ -25,9 +25,8 @@ jobs:
           enable-cache: true
 
       # uv reads requires-python from pyproject.toml and installs Python itself.
-      - name: Sync ${{ matrix.course }}
-        run: uv sync
-        working-directory: ${{ matrix.course }}
+      - name: Install ${{ matrix.course }}
+        run: make -C ${{ matrix.course }} install
 
-      - name: Run ${{ matrix.course }} solution suites
-        run: ./scripts/test.sh ${{ matrix.course }}
+      - name: Verify ${{ matrix.course }} reference solutions
+        run: make -C ${{ matrix.course }} test
