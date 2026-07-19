@@ -9,7 +9,7 @@ Four hands-on courses that teach the **Model Context Protocol** by building one
 thing all the way through: **EpicMe**, a personal journal an AI app can read,
 write, tag, and reason about.
 
-They're Python ports of the [EpicWeb.dev](https://www.epicweb.dev) MCP workshops,
+They're Python ports of the [Epic AI](https://www.epicai.pro) MCP workshops,
 which teach the same material in TypeScript. Everything here runs on `uv` and the
 official [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk) —
 no Node, no npm, no TypeScript.

@@ -142,7 +142,7 @@ you've earned it.
 
 This is a Python port of
 [**mcp-auth**](https://github.com/epicweb-dev/mcp-auth) by
-[EpicWeb.dev](https://www.epicweb.dev) (Kent C. Dodds), which teaches the same
+[Epic AI](https://www.epicai.pro) (Kent C. Dodds), which teaches the same
 curriculum in TypeScript on Cloudflare Workers. The exercise structure and the
 EpicMe idea come from that workshop; the Python code and lesson text here were
 written fresh for this port.

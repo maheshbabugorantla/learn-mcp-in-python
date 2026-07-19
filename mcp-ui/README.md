@@ -128,7 +128,7 @@ read that code; you don't grade it.
 
 This is a Python port of
 [**mcp-ui**](https://github.com/epicweb-dev/mcp-ui) by
-[EpicWeb.dev](https://www.epicweb.dev) (Kent C. Dodds), which teaches the same
+[Epic AI](https://www.epicai.pro) (Kent C. Dodds), which teaches the same
 sub-spec in TypeScript. The exercise idea and the EpicMe journal come from that
 workshop; the Python code and all lesson text here were written fresh for this
 port. Where upstream builds the interactive iframe steps in React, this port

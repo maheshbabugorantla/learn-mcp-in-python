@@ -116,7 +116,7 @@ you the machinery FastMCP delegates to underneath.
 
 This is a Python port of
 [**advanced-mcp-features**](https://github.com/epicweb-dev/advanced-mcp-features)
-by [EpicWeb.dev](https://www.epicweb.dev) (Kent C. Dodds), which teaches the same
+by [Epic AI](https://www.epicai.pro) (Kent C. Dodds), which teaches the same
 material in TypeScript. The exercise structure and the EpicMe journal come from
 that workshop; the Python code and all lesson text here were written fresh for
 this port.

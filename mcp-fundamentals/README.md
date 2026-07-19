@@ -106,7 +106,7 @@ move. The pin in `pyproject.toml` keeps this course stable in the meantime.
 
 This is a Python port of
 [**mcp-fundamentals**](https://github.com/epicweb-dev/mcp-fundamentals) by
-[EpicWeb.dev](https://www.epicweb.dev) (Kent C. Dodds), which teaches the same
+[Epic AI](https://www.epicai.pro) (Kent C. Dodds), which teaches the same
 curriculum in TypeScript. The exercise structure and the EpicMe journal idea come
 from that workshop; the Python code and lesson text here were written fresh for
 this port.
