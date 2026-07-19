@@ -1,4 +1,9 @@
-# Learning MCP in Python
+# Learn MCP in Python
+
+[![tests](https://github.com/maheshbabugorantla/learn-mcp-in-python/actions/workflows/ci.yml/badge.svg)](https://github.com/maheshbabugorantla/learn-mcp-in-python/actions/workflows/ci.yml)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
+[![uv](https://img.shields.io/badge/managed%20with-uv-261230)](https://github.com/astral-sh/uv)
 
 Four hands-on courses that teach the **Model Context Protocol** by building one
 thing all the way through: **EpicMe**, a personal journal an AI app can read,
@@ -8,6 +13,39 @@ They're Python ports of the [EpicWeb.dev](https://www.epicweb.dev) MCP workshops
 which teach the same material in TypeScript. Everything here runs on `uv` and the
 official [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk) —
 no Node, no npm, no TypeScript.
+
+## Prerequisites
+
+You need [**`uv`**](https://docs.astral.sh/uv/) — that's the only prerequisite. It
+installs and manages Python itself, so you don't need a separate Python 3.10+.
+
+```sh
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Node is **not** required. (The one optional exception is the MCP Inspector in the
+fundamentals course, `uv run mcp dev server.py`, which shells out to `npx` — the
+tests never need it.)
+
+## Quickstart
+
+On macOS or Linux, a `Makefile` wraps everything:
+
+```sh
+make install   # install every course's dependencies (uv sync)
+make test      # run all 41 solution suites across the four courses
+make demo      # launch the mcp-ui browser demo at http://localhost:8788
+make help      # list every target
+```
+
+No `make` (e.g. Windows)? Do it per course — each is an independent `uv` project:
+
+```sh
+cd mcp-fundamentals
+uv sync
+uv run pytest exercises/01.ping/01.problem.connect
+```
 
 ## The four courses
 
@@ -72,14 +110,72 @@ Each course is a standalone project with its own `pyproject.toml` and its own
 virtualenv. Do fundamentals first — all three branches assume you already know
 what a tool is.
 
-## How they work
+## How the exercises work
 
 Every exercise is a **problem** directory and a **solution** directory. Read the
-problem's `README.md`, fill in the `TODO`s until the tests pass, and diff against
-the solution when you're stuck. Run one directory at a time.
+problem's `README.md`, fill in the `TODO`s in `server.py` until the tests pass,
+and diff against the solution when you're stuck.
 
 The tests are the feedback loop, and they need nothing running — no servers, no
-subprocesses, no ports.
+subprocesses, no ports. They spin up an in-memory MCP client wired to your server
+and check what it returns.
+
+## Repository layout
+
+```
+.
+├── mcp-fundamentals/        # the base course
+├── mcp-auth/                # branch: users + OAuth 2.1
+├── mcp-ui/                  # branch: UI resources (+ a runnable browser demo)
+├── mcp-advanced-features/   # branch: elicitation, sampling, progress, changes
+├── scripts/test.sh          # runs every course's solution suites
+├── Makefile                 # install / test / demo / clean
+├── .github/workflows/ci.yml # runs all solution suites on push
+└── README.md
+```
+
+Each `<course>/` holds `pyproject.toml`, `uv.lock`, a course `README.md`, and an
+`exercises/` tree of `NN.topic/NN.{problem,solution}.<slug>/` directories.
+
+## Running the tests
+
+```sh
+make test                 # all four courses
+make test-fundamentals    # one course
+make test-ui
+# …or directly:
+./scripts/test.sh mcp-auth
+```
+
+Tests run **one directory at a time**, on purpose. Each course is a separate `uv`
+project, and within a course every exercise dir has its own `server.py` /
+`test_server.py` — the same module names in every dir — so pytest can't collect a
+whole course in one pass. `scripts/test.sh` handles this by running each solution
+suite in turn; the same script backs the Makefile and CI. (Problem directories are
+*meant* to fail until you finish them, so the sweep runs the solutions.)
+
+## Dependencies: runtime vs. dev
+
+Each course uses `uv`'s dependency groups to separate the two:
+
+- **Runtime** (`[project].dependencies`): just **`mcp==1.28.1`** — the only thing
+  the MCP server you build needs to run. Starlette, uvicorn, httpx, and pydantic
+  come with the SDK, so the auth server and the ui demo use them without adding
+  anything of their own.
+- **Dev** (`[dependency-groups].dev`): **`pytest`** and **`pytest-asyncio`**, the
+  test runner that drives the exercises (plus the `mcp[cli]` Inspector in
+  fundamentals). `pytest-asyncio` is here because the MCP client sessions are
+  async; `asyncio_mode = "auto"` lets the `async def test_...` functions run
+  without ceremony.
+
+`uv sync` installs both groups (so the tests just work). Want only what a
+deployed server needs? `uv sync --no-dev`.
+
+## Contributing
+
+This is a teaching repository, so the bar is: keep it clear and keep it green.
+Prose is written fresh (not translated from the upstream workshops — see the
+license note), and `make test` must stay at 41/41 before anything lands.
 
 ## Credit and license
 
