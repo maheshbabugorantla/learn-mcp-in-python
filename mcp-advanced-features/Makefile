@@ -5,7 +5,7 @@
 # Edit that exercise's server.py, re-run, watch it go from red to green.
 
 .DEFAULT_GOAL := help
-.PHONY: help install test-exercise test clean
+.PHONY: help install test-exercise test test-problems clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -27,6 +27,21 @@ test: ## Run every solution suite in this course (one exercise at a time)
 		uv run pytest "$$d" -q -p no:cacheprovider || fail=1; \
 	done; \
 	if [ $$fail -eq 0 ]; then echo "all solution suites passed"; else echo "some suites failed"; exit 1; fi
+
+test-problems: ## Check every problem suite starts red (fails on its TODO, exit 1)
+	@bad=0; for d in $$(find exercises -type d -name '*.problem*' | sort); do \
+		log=$$(uv run pytest "$$d" -q -p no:cacheprovider 2>&1); rc=$$?; \
+		if [ $$rc -eq 1 ]; then \
+			printf 'red   %s\n' "$$d"; \
+		elif [ $$rc -eq 0 ]; then \
+			printf 'BAD   %s -- passed (stub already solved, or the test is too weak)\n' "$$d"; bad=1; \
+		else \
+			printf 'BAD   %s -- expected the suite to fail (exit 1), got exit %s:\n' "$$d" "$$rc"; \
+			printf '%s\n' "$$log" | tail -n 15 | sed 's/^/    /'; \
+			bad=1; \
+		fi; \
+	done; \
+	if [ $$bad -eq 0 ]; then echo "all problem suites start red"; else echo "some problems did not start red -- see above"; exit 1; fi
 
 clean: ## Remove this course's virtualenv and caches
 	@rm -rf .venv .pytest_cache

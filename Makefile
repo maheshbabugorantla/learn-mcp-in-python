@@ -12,7 +12,7 @@ COURSES := mcp-fundamentals mcp-auth mcp-ui mcp-advanced-features
 MAKE_C := $(MAKE) --no-print-directory -C
 
 .DEFAULT_GOAL := help
-.PHONY: help check-uv install test test-fundamentals test-auth test-ui test-advanced demo clean
+.PHONY: help check-uv install test test-problems test-fundamentals test-auth test-ui test-advanced demo clean
 
 help: ## Show this help
 	@echo "Learn MCP in Python — repo-wide targets:"
@@ -33,6 +33,9 @@ install: check-uv ## Install every course's dependencies (uv sync)
 
 test: check-uv ## Verify every course's reference solutions (what CI runs)
 	@for c in $(COURSES); do echo "== $$c =="; $(MAKE_C) $$c test || exit 1; done
+
+test-problems: check-uv ## Verify every course's problems start red (what CI runs)
+	@for c in $(COURSES); do echo "== $$c =="; $(MAKE_C) $$c test-problems || exit 1; done
 
 test-fundamentals: check-uv ## Verify the fundamentals reference solutions
 	@$(MAKE_C) mcp-fundamentals test
