@@ -3,9 +3,9 @@ name = "mcp-auth-python"
 version = "0.1.0"
 description = "Learn MCP authorization by building a remote MCP server with users"
 requires-python = ">=3.10"
-# The MCP Python SDK is the only dependency. Starlette, httpx and pydantic all
+# Runtime: the MCP SDK is the only dependency. Starlette, httpx and pydantic all
 # come with it, so the course uses them without adding anything of its own.
-dependencies = ["mcp[cli]==1.28.1"]
+dependencies = ["mcp==1.28.1"]
 
 [project.scripts]
 epicme-auth = "epicme.__main__:main"

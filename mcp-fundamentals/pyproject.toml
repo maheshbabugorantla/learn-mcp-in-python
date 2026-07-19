@@ -5,13 +5,17 @@ description = "Learn the Model Context Protocol by building an MCP server in Pyt
 requires-python = ">=3.10"
 license = { text = "GPL-3.0-only" }
 dependencies = [
-    "mcp[cli]==1.28.1",
+    # Runtime: the MCP server you build needs only the SDK to run.
+    "mcp==1.28.1",
 ]
 
 [dependency-groups]
 dev = [
+    # Tooling to work through the course: the test runner, its async support,
+    # and the optional `uv run mcp dev` Inspector (the `cli` extra — needs Node).
     "pytest>=8.3",
     "pytest-asyncio>=0.24",
+    "mcp[cli]==1.28.1",
 ]
 
 [tool.pytest.ini_options]

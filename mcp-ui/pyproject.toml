@@ -3,9 +3,9 @@ name = "mcp-ui-python"
 version = "0.1.0"
 description = "Learn the MCP-UI sub-spec by building a journal that sends UI, in Python"
 requires-python = ">=3.10"
-# The MCP Python SDK is the only MCP dependency. Starlette, uvicorn and pydantic
+# Runtime: the MCP SDK is the only dependency. Starlette, uvicorn and pydantic
 # come with it, so the runnable demo uses them without adding anything new.
-dependencies = ["mcp[cli]==1.28.1"]
+dependencies = ["mcp==1.28.1"]
 
 [dependency-groups]
 dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]

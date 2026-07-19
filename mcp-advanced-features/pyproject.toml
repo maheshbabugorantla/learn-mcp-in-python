@@ -3,10 +3,10 @@ name = "mcp-advanced-features-python"
 version = "0.1.0"
 description = "Advanced MCP server features in Python — elicitation, sampling, progress, cancellation, and change notifications"
 requires-python = ">=3.10"
-# The MCP Python SDK is the only dependency. pytest drives the exercises; every
-# advanced feature here is exercised in memory, with a fake client supplying the
-# LLM (sampling) and the human (elicitation).
-dependencies = ["mcp[cli]==1.28.1"]
+# Runtime: the MCP SDK is the only dependency. pytest (a dev dependency) drives
+# the exercises; every advanced feature here is exercised in memory, with a fake
+# client supplying the LLM (sampling) and the human (elicitation).
+dependencies = ["mcp==1.28.1"]
 
 [dependency-groups]
 dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]
