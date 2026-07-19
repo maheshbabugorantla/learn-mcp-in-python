@@ -1,0 +1,33 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  solutions:
+    name: ${{ matrix.course }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        course:
+          - mcp-fundamentals
+          - mcp-auth
+          - mcp-ui
+          - mcp-advanced-features
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      # uv reads requires-python from pyproject.toml and installs Python itself.
+      - name: Sync ${{ matrix.course }}
+        run: uv sync
+        working-directory: ${{ matrix.course }}
+
+      - name: Run ${{ matrix.course }} solution suites
+        run: ./scripts/test.sh ${{ matrix.course }}
