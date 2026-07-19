@@ -1,6 +1,6 @@
 # Learning MCP in Python
 
-Three hands-on courses that teach the **Model Context Protocol** by building one
+Four hands-on courses that teach the **Model Context Protocol** by building one
 thing all the way through: **EpicMe**, a personal journal an AI app can read,
 write, tag, and reason about.
 
@@ -9,13 +9,15 @@ which teach the same material in TypeScript. Everything here runs on `uv` and th
 official [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk) —
 no Node, no npm, no TypeScript.
 
-## The three courses
+## The four courses
 
 They're not a single line. **[mcp-fundamentals](mcp-fundamentals)** is the base.
-Then **[mcp-ui](mcp-ui)** and **[mcp-auth](mcp-auth)** are two independent
-branches off it — do fundamentals first, then either one, in either order.
-Neither branch requires the other: ui gives the journal a face, auth gives it
-users, and they don't touch.
+Then **[mcp-auth](mcp-auth)**, **[mcp-ui](mcp-ui)**, and
+**[mcp-advanced-features](mcp-advanced-features)** are three independent branches
+off it — do fundamentals first, then any of the three, in any order. None of them
+requires the others: auth gives the journal users, ui gives it a face, and
+advanced-features gives it the server-initiated parts of the protocol. They don't
+touch.
 
 **[mcp-fundamentals](mcp-fundamentals)** — start here. Build an MCP server from
 nothing: a server that answers a ping, then tools the model can call, resources
@@ -51,9 +53,24 @@ uv sync
 uv run pytest exercises/01.discovery/01.problem.cors
 ```
 
+**[mcp-advanced-features](mcp-advanced-features)** — a branch. Basic MCP is
+request/response: the client calls, the server answers. Here the **server**
+starts the conversation instead — it asks the user to confirm before a delete
+(elicitation), asks the client's model to write a reflection (sampling), reports
+progress through slow work and accepts a cancel, and announces when something
+changed so the client looks again (list-changed and subscriptions). Same journal,
+no auth, no browser — just the parts of the protocol where the server speaks
+first.
+
+```sh
+cd mcp-advanced-features
+uv sync
+uv run pytest exercises/02.elicitation/01.problem
+```
+
 Each course is a standalone project with its own `pyproject.toml` and its own
-virtualenv. Do fundamentals first — both branches assume you already know what a
-tool is.
+virtualenv. Do fundamentals first — all three branches assume you already know
+what a tool is.
 
 ## How they work
 
@@ -67,10 +84,11 @@ subprocesses, no ports.
 ## Credit and license
 
 Python ports of [**mcp-fundamentals**](https://github.com/epicweb-dev/mcp-fundamentals),
+[**mcp-auth**](https://github.com/epicweb-dev/mcp-auth),
 [**mcp-ui**](https://github.com/epicweb-dev/mcp-ui), and
-[**mcp-auth**](https://github.com/epicweb-dev/mcp-auth) by Kent C. Dodds. The
-exercise structure and the EpicMe idea are theirs; the Python code and all lesson
-text here were written fresh for these ports.
+[**advanced-mcp-features**](https://github.com/epicweb-dev/advanced-mcp-features)
+by Kent C. Dodds. The exercise structure and the EpicMe idea are theirs; the
+Python code and all lesson text here were written fresh for these ports.
 
 If TypeScript is your language, go do the originals — they're excellent, and they
 come with a proper workshop app.
