@@ -3,3 +3,9 @@ __pycache__/
 .venv/
 .pytest_cache/
 *.db
+
+# Local Claude Code state (plans, memory, settings) — never published.
+.claude/
+
+# macOS
+.DS_Store
