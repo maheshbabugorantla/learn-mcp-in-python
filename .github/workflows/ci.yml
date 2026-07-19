@@ -30,3 +30,8 @@ jobs:
 
       - name: Verify ${{ matrix.course }} reference solutions
         run: make -C ${{ matrix.course }} test
+
+      # The starting point of every exercise must fail on its TODO (exit 1) —
+      # not pass by accident, and not break at import/collection.
+      - name: Verify ${{ matrix.course }} problems start red
+        run: make -C ${{ matrix.course }} test-problems
