@@ -1,17 +1,24 @@
-# Learn MCP in Python — developer tasks.
-# Run `make` (or `make help`) to see the available targets.
+# Learn MCP in Python — repo-wide tasks. Run `make` to see targets.
+#
+# For day-to-day learning, cd into a course and use ITS Makefile — that's where
+# the per-exercise loop lives:
+#   cd mcp-fundamentals
+#   make test-exercise E=exercises/01.ping/01.problem.connect
+#
+# The targets here operate across all four courses (install everything, verify
+# every reference solution — what CI runs, launch the demo).
 
 COURSES := mcp-fundamentals mcp-auth mcp-ui mcp-advanced-features
+MAKE_C := $(MAKE) --no-print-directory -C
 
 .DEFAULT_GOAL := help
-
 .PHONY: help check-uv install test test-fundamentals test-auth test-ui test-advanced demo clean
 
 help: ## Show this help
-	@echo "Learn MCP in Python — make targets:"
+	@echo "Learn MCP in Python — repo-wide targets:"
+	@echo "(for one course, cd into it and run its own \`make help\`)"
 	@echo
-	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
-		| sort \
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
 check-uv: ## Check that uv is installed
@@ -22,29 +29,25 @@ check-uv: ## Check that uv is installed
 		exit 1; }
 
 install: check-uv ## Install every course's dependencies (uv sync)
-	@for c in $(COURSES); do echo "==> $$c"; (cd $$c && uv sync) || exit 1; done
+	@for c in $(COURSES); do echo "==> $$c"; $(MAKE_C) $$c install || exit 1; done
 
-test: check-uv ## Run every course's solution test suites
-	@./scripts/test.sh
+test: check-uv ## Verify every course's reference solutions (what CI runs)
+	@for c in $(COURSES); do echo "== $$c =="; $(MAKE_C) $$c test || exit 1; done
 
-test-fundamentals: check-uv ## Run the fundamentals solution suites
-	@./scripts/test.sh mcp-fundamentals
+test-fundamentals: check-uv ## Verify the fundamentals reference solutions
+	@$(MAKE_C) mcp-fundamentals test
 
-test-auth: check-uv ## Run the auth solution suites
-	@./scripts/test.sh mcp-auth
+test-auth: check-uv ## Verify the auth reference solutions
+	@$(MAKE_C) mcp-auth test
 
-test-ui: check-uv ## Run the ui solution suites
-	@./scripts/test.sh mcp-ui
+test-ui: check-uv ## Verify the ui reference solutions
+	@$(MAKE_C) mcp-ui test
 
-test-advanced: check-uv ## Run the advanced-features solution suites
-	@./scripts/test.sh mcp-advanced-features
+test-advanced: check-uv ## Verify the advanced-features reference solutions
+	@$(MAKE_C) mcp-advanced-features test
 
-demo: check-uv ## Launch the mcp-ui browser demo on http://localhost:8788 (Ctrl-C to stop)
+demo: check-uv ## Launch the mcp-ui browser demo (http://localhost:8788, Ctrl-C to stop)
 	@cd mcp-ui && uv run python demo/app.py
 
-clean: ## Remove virtualenvs, caches, and scratch databases
-	@find . -type d -name '.venv' -prune -exec rm -rf {} + 2>/dev/null || true
-	@find . -type d -name '__pycache__' -prune -exec rm -rf {} + 2>/dev/null || true
-	@find . -type d -name '.pytest_cache' -prune -exec rm -rf {} + 2>/dev/null || true
-	@find . -type f -name '*.db' -delete 2>/dev/null || true
-	@echo "cleaned virtualenvs, caches, and scratch databases"
+clean: ## Remove every course's virtualenv and caches
+	@for c in $(COURSES); do $(MAKE_C) $$c clean; done
