@@ -11,7 +11,14 @@ dependencies = ["mcp==1.28.1"]
 epicme-auth = "epicme.__main__:main"
 
 [dependency-groups]
-dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    # An interactive shell and a better debugger for poking at the SDK and its
+    # docs while you work (import mcp, tab-complete, drop a breakpoint()).
+    "ipython>=8.39.0",
+    "pdbpp>=0.12.1",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
