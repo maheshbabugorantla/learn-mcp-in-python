@@ -30,22 +30,28 @@ tests never need it.)
 
 ## Quickstart
 
-On macOS or Linux, a `Makefile` wraps everything:
-
-```sh
-make install   # install every course's dependencies (uv sync)
-make test      # run all 41 solution suites across the four courses
-make demo      # launch the mcp-ui browser demo at http://localhost:8788
-make help      # list every target
-```
-
-No `make` (e.g. Windows)? Do it per course — each is an independent `uv` project:
+Each course is its own project with its own `Makefile`. The everyday loop lives
+**inside a course**, one exercise at a time:
 
 ```sh
 cd mcp-fundamentals
-uv sync
+make install                                              # uv sync this course
+# edit exercises/01.ping/01.problem.connect/server.py, then:
+make test-exercise E=exercises/01.ping/01.problem.connect # red → green
+```
+
+`make help` (in a course) lists its targets; `make test` runs that whole course.
+
+No `make` (e.g. Windows)? The underlying command is just:
+
+```sh
+cd mcp-fundamentals && uv sync
 uv run pytest exercises/01.ping/01.problem.connect
 ```
+
+The **root** `Makefile` is the repo-wide view — `make install` / `make test`
+across all four courses (what CI runs) and `make demo` for the mcp-ui browser
+demo.
 
 ## The four courses
 
@@ -124,35 +130,42 @@ and check what it returns.
 
 ```
 .
-├── mcp-fundamentals/        # the base course
+├── mcp-fundamentals/        # the base course (own Makefile + pyproject + uv.lock)
 ├── mcp-auth/                # branch: users + OAuth 2.1
 ├── mcp-ui/                  # branch: UI resources (+ a runnable browser demo)
 ├── mcp-advanced-features/   # branch: elicitation, sampling, progress, changes
-├── scripts/test.sh          # runs every course's solution suites
-├── Makefile                 # install / test / demo / clean
-├── .github/workflows/ci.yml # runs all solution suites on push
-└── README.md
+├── Makefile                 # repo-wide: install / test all / demo / clean
+└── .github/workflows/ci.yml # verifies every course's solutions on push
 ```
 
-Each `<course>/` holds `pyproject.toml`, `uv.lock`, a course `README.md`, and an
-`exercises/` tree of `NN.topic/NN.{problem,solution}.<slug>/` directories.
+Each `<course>/` holds its own `Makefile`, `pyproject.toml`, `uv.lock`, a course
+`README.md`, and an `exercises/` tree of
+`NN.topic/NN.{problem,solution}.<slug>/` directories.
 
 ## Running the tests
 
+The loop you'll actually use is per-exercise, from inside a course:
+
 ```sh
-make test                 # all four courses
-make test-fundamentals    # one course
-make test-ui
-# …or directly:
-./scripts/test.sh mcp-auth
+cd mcp-fundamentals
+make test-exercise E=exercises/01.ping/01.problem.connect   # the one you're on
+make test                                                   # this whole course
+```
+
+The repo-wide targets verify **all** reference solutions at once (what CI runs —
+you rarely need this as a learner):
+
+```sh
+make test                 # every course (from the repo root)
+make test-fundamentals    # one course, from the root
 ```
 
 Tests run **one directory at a time**, on purpose. Each course is a separate `uv`
 project, and within a course every exercise dir has its own `server.py` /
 `test_server.py` — the same module names in every dir — so pytest can't collect a
-whole course in one pass. `scripts/test.sh` handles this by running each solution
-suite in turn; the same script backs the Makefile and CI. (Problem directories are
-*meant* to fail until you finish them, so the sweep runs the solutions.)
+whole course in one pass. Each course's `Makefile` runs the suites one dir at a
+time; the root `Makefile` and CI just delegate to it. (Problem directories are
+*meant* to fail until you finish them — `make test` runs the reference solutions.)
 
 ## Dependencies: runtime vs. dev
 
