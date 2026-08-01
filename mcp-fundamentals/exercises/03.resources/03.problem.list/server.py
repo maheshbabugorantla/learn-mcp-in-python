@@ -8,11 +8,12 @@ import json
 
 from mcp.server.fastmcp import FastMCP
 
-from db import DB
+from db import DB, Tag, Entry
 
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage a personal journal.",
+    port=8080
 )
 db = DB()
 db.seed()
@@ -25,8 +26,12 @@ db.seed()
     mime_type="application/json",
 )
 def all_tags() -> str:
-    tags = [tag.to_dict() for tag in db.get_tags()]
-    return json.dumps(tags, indent=2)
+    def map_tag_for_discovery(tag: Tag):
+        return {"id": tag.id, "name": tag.name, "uri": f"epicme://tags/{tag.id}"}
+    return json.dumps(
+        list(map(lambda tag: map_tag_for_discovery(tag), db.get_tags())),
+        indent=2
+    )
 
 
 @mcp.resource(
@@ -62,6 +67,19 @@ def one_tag(id: str) -> str:
 # per entry with its `id`, its `title`, and a `uri` of
 # f"epicme://entries/{entry.id}" so a client can follow the link straight to
 # the full record. Serialize with `json.dumps(..., indent=2)`.
+@mcp.resource(
+    uri="epicme://entries",
+    name="entries",
+    description="All journal entries, with the URI to read each one",
+    mime_type="application/json"
+)
+def all_entries() -> str:
+    def map_entry_for_discovery(entry: Entry):
+        return {"id": entry.id, "title": entry.title, "uri": f"epicme://entries/{entry.id}"}
+    return json.dumps(
+        list(map(lambda entry: map_entry_for_discovery(entry), db.get_entries())),
+        indent=2
+    )
 
 
 @mcp.resource(
@@ -78,4 +96,4 @@ def one_entry(id: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
