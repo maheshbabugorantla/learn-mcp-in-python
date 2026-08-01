@@ -12,6 +12,7 @@ from pydantic import Field
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you solve math problems.",
+    port=8080,
 )
 
 
@@ -21,8 +22,7 @@ def add(
     second_number: Annotated[int, Field(description="The second number to add")],
 ) -> str:
     """Add two numbers together. The second number cannot be negative."""
-    # TODO: Reject a negative `second_number`.
-    #
+
     # The `int` hint can't catch this one: -5 is a perfectly valid integer, so
     # pydantic lets it through. Rules about *meaning* rather than *shape* live
     # here, in the function body.
@@ -38,9 +38,11 @@ def add(
     # The shape:
     #     if second_number < 0:
     #         raise ValueError("Second number cannot be negative")
+    if second_number < 0:
+        raise ValueError("Second number cannot be negative")
     total = first_number + second_number
     return f"The sum of {first_number} and {second_number} is {total}."
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
