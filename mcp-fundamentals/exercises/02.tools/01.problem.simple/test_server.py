@@ -36,3 +36,18 @@ async def test_add_tool_adds():
     assert "3" in text, (
         f"Expected the sum (3) somewhere in the result, but got: {text!r}"
     )
+
+
+async def test_add_floats_tool_adds():
+    """Calling `add_floats` should come back with the sum in a readable sentence."""
+    async with connect(mcp) as client:
+        result = await client.call_tool("add_floats", {"first_number": 1.0, "second_number": 2.0})
+
+    assert not result.isError, (
+        f"Calling `add_floats` returned an error: {result.content[0].text}"
+    )
+
+    text = result.content[0].text
+    assert "3.0" in text, (
+        f"Expected the sum (3.0) somewhere in the result, but got: {text!r}"
+    )

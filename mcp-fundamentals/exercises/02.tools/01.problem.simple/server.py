@@ -9,6 +9,7 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you solve math problems.",
+    port=8080,
 )
 
 
@@ -30,6 +31,20 @@ mcp = FastMCP(
 #         """Add two numbers together."""
 #         return f"The sum of ... is ..."
 
+@mcp.tool(title="Add Two Integer numbers", description="first_number: int + second_number: int -> result: str")
+def add(first_number: int, second_number: int) -> str:
+    """ Add two numbers """
+    result = first_number + second_number
+    return f"The sum of {first_number} and {second_number} is {result}"
+
+
+@mcp.tool(title="Add Two Floating Point numbers", description="first_number: float + second_number: float -> result: float")
+def add_floats(first_number: float, second_number: float) -> float:
+    """ Add two floating point numbers """
+    result = first_number + second_number
+    return float(f"{result:.4f}")
+
+
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
