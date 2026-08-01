@@ -13,13 +13,12 @@ from db import DB
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage a personal journal.",
+    port=8080,
 )
 db = DB()
 db.seed()
 
 
-# TODO: Register a static resource at `epicme://tags`.
-#
 # The decorator carries the URI; the function returns the contents as a string.
 # Describe it properly — `description` is what a user sees in a picker UI, and
 # `mime_type` is how the client knows to treat your output as JSON, not prose.
@@ -38,5 +37,16 @@ db.seed()
 # `json.dumps(..., indent=2)`.
 
 
+@mcp.resource(
+    "epicme://tags",
+    name="tags",
+    description="All tags in the journal",
+    mime_type="application/json"
+)
+def all_tags() -> str:
+    tags = db.get_tags()
+    return json.dumps(list(map(lambda tag: tag.to_dict(), tags)), indent=2)
+
+
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
