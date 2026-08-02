@@ -39,3 +39,10 @@ Run the exercise's tests from the repo root:
 ```sh
 uv run pytest exercises/02.consistent/01.problem.remote-dom
 ```
+
+## What's next?
+
+**Complex UI** runs into the limit these two share: rawHtml and remote-dom both
+carry the interface *inside* the tool result. That is right for a tag card and
+wrong for a whole journal page. The next topic sends an address instead of an
+interface, and lets the client load it in an iframe.

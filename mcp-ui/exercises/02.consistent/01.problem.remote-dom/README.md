@@ -50,3 +50,10 @@ uv run pytest exercises/02.consistent/01.problem.remote-dom
 
 Stuck? Diff your `server.py` against the sibling
 [`01.solution.remote-dom`](../01.solution.remote-dom/server.py).
+
+## What's next?
+
+Next, **Complex UI** does something neither of the first two steps did: it leaves
+`view_tag` exactly as you just left it and adds a second tool beside it. Not every
+interface fits in a tool result, and a whole journal page is the case that
+doesn't.

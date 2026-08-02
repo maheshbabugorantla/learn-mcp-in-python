@@ -48,3 +48,10 @@ Run the exercise's tests from the repo root:
 ```sh
 uv run pytest exercises/01.simple/01.problem.raw-html
 ```
+
+## What's next?
+
+Raw HTML is the easy case and also the least cooperative one: it settles the
+fonts, the spacing and the colors before the client ever sees it. **Consistent
+UI** hands that authority back — your server describes what the card *is*, and
+the client renders it in its own house style.
