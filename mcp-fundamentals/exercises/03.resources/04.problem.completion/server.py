@@ -5,6 +5,7 @@ Run `uv run pytest exercises/03.resources/04.problem.completion` until it passes
 """
 
 import json
+from collections.abc import Callable, Iterable
 
 from mcp.server.fastmcp import FastMCP
 from mcp.types import (
@@ -20,6 +21,7 @@ from db import DB
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage a personal journal.",
+    port=8080,
 )
 db = DB()
 db.seed()
@@ -108,5 +110,41 @@ def one_entry(id: str) -> str:
 #   4. Return `Completion(values=matches, hasMore=False)`.
 
 
+def _find_close_matches(partial_id: str, ids: Iterable[int]) -> list[str]:
+    string_ids = (str(id) for id in ids)
+    return [id for id in string_ids if id.startswith(partial_id)]
+
+
+def _find_close_matches_for_tag_ids(partial_id: str) -> list[str]:
+    return _find_close_matches(partial_id, db.get_tag_ids())
+
+
+def _find_close_matches_for_entry_ids(partial_id: str) -> list[str]:
+    return _find_close_matches(partial_id, db.get_entry_ids())
+
+
+_MATCHERS: dict[str, Callable[[str], list[str]]] = {
+    "epicme://entries/{id}": _find_close_matches_for_entry_ids,
+    "epicme://tags/{id}": _find_close_matches_for_tag_ids,
+}
+
+
+@mcp.completion()
+async def handle_completion(
+    ref: PromptReference | ResourceTemplateReference,
+    argument: CompletionArgument,
+    context: CompletionContext | None,
+) -> Completion | None:
+    if not isinstance(ref, ResourceTemplateReference) or argument.name != "id":
+        return None
+
+    if isinstance(ref, ResourceTemplateReference):
+        matcher = _MATCHERS.get(ref.uri)
+        if matcher is None:
+            return None
+        return Completion(values=matcher(argument.value), hasMore=False)
+    return None
+
+
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
