@@ -1,4 +1,4 @@
-"""EpicMe MCP server — resources/list_changed (solution).
+"""EpicMe MCP server — resources/list_changed (problem).
 
 Tools aren't the only list a client caches. The `epicme://tags` and
 `epicme://entries` resource collections list what's in the journal, and every
