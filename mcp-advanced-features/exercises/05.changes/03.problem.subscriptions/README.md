@@ -82,5 +82,4 @@ Stuck? Diff against
 
 That's the last exercise in the course. Read
 `exercises/05.changes/FINISHED.md` — it names the throughline running under all
-five topics, and it is straight about what this course simplified on purpose,
-which is the part worth knowing before you build the real thing.
+five topics and lists what the course simplified on purpose.
