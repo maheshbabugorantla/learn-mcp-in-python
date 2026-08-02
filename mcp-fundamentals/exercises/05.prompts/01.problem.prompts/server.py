@@ -233,6 +233,29 @@ def one_entry(id: str) -> str:
 #      Interpolate `entry_id` into it, and ask the model to look the entry up,
 #      look at the existing tags, and suggest tags for it.
 
+@mcp.prompt(
+    name="suggest_tags",
+    description="Suggest tags for a journal entry"
+)
+def suggest_tags(
+    entry_id: Annotated[str, Field(description="The ID of the journal entry to suggest tags for")]
+) -> str:
+    def _convert_str_to_int(value: str) -> int | None:
+        if not isinstance(value, str):
+            raise TypeError(f"'value' should be a string")
+
+        try:
+            return int(value)
+        except ValueError:
+            raise ValueError(f"'value' = {value} cannot be casted to int")
+
+    _entry_id = _convert_str_to_int(entry_id)
+    return (
+        f"Suggest tags for journal entry based on the tags associated with epicme://entries/{_entry_id} resource. "
+        "Suggest any new tags that are worth adding, provide a brief explanation on why. ",
+        "Ask me to approve any changes before finalizing the tags list"
+    )
+
 
 @mcp.completion()
 async def handle_completion(
