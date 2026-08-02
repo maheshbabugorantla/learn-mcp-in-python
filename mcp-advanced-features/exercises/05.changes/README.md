@@ -64,3 +64,9 @@ Run one step at a time, from the repo root:
 ```sh
 uv run pytest exercises/05.changes/01.problem.list-changed
 ```
+
+## What's next?
+
+This is the last topic. `mcp-fundamentals` is the only course this one builds
+on, so if you came straight here, `mcp-auth` and `mcp-ui` are still waiting —
+they branch off the same base and need nothing you built here.

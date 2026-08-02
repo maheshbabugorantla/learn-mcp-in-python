@@ -53,3 +53,9 @@ That clears the moment each tool carries its `ToolAnnotations`.
 
 Stuck? Diff against
 [`01.solution.annotations`](../01.solution.annotations/server.py).
+
+## What's next?
+
+Annotations describe a tool *before* anyone calls it. Next you fix what comes
+back *after*: the two read tools still answer with prose that a program has to
+pick apart. Same audience, other end of the same call.

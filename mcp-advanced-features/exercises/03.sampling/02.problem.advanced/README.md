@@ -75,3 +75,10 @@ that both `"work"` and `"ideas"` are attached to the new entry, and those
 assertions fail until you make `_suggest_tags` return real names.
 
 Stuck? Diff against `exercises/03.sampling/02.solution.advanced/server.py`.
+
+## What's next?
+
+**Long-running tasks** swaps the journal for a slow job: rendering a
+year-in-review video. Nobody is being asked anything there — it is just work that
+takes long enough that silence becomes the problem, and a client that may decide
+partway through that it doesn't want the answer after all.

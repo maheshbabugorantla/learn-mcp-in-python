@@ -66,3 +66,9 @@ result, and there's no reflection there yet. Wire up `create_message` and it tur
 green.
 
 Stuck? Diff against `exercises/03.sampling/01.solution.simple/server.py`.
+
+## What's next?
+
+Next the model's answer stops being decoration. Instead of appending a sentence,
+you parse what comes back into tag names and write them to the database — so a
+model that answers badly no longer just reads oddly, it leaves rows behind.

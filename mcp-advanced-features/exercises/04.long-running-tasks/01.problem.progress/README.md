@@ -40,3 +40,9 @@ progress events. With nothing wired up it sees zero. Connect `on_progress` to
 `ctx.report_progress` and pass it in, and the events start flowing.
 
 Stuck? Diff against `exercises/04.long-running-tasks/01.solution.progress/server.py`.
+
+## What's next?
+
+That's the outbound half. Next comes the inbound one: the client decides it has
+waited long enough and cancels. Your render has to notice, tidy up after itself,
+and let the cancellation carry on unwinding.

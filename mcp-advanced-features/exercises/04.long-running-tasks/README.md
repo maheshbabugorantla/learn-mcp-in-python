@@ -53,3 +53,10 @@ uv run pytest exercises/04.long-running-tasks/01.problem.progress
 ```
 
 Everything runs in memory — no ffmpeg, no network, nothing to start.
+
+## What's next?
+
+Progress and cancellation both need someone on the other end waiting on a
+result. **Changes** drops that requirement: the server speaks up between calls,
+to a client that asked it for nothing, because something the client fetched
+earlier and kept is no longer true.

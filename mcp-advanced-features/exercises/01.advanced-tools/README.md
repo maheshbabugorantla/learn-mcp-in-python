@@ -80,3 +80,12 @@ Run each step's tests from the repo root, one directory at a time:
 ```sh
 uv run pytest exercises/01.advanced-tools/01.problem.annotations
 ```
+
+## What's next?
+
+Both steps here are still request and response — the client asks, you answer,
+only with better metadata going out and a better shape coming back.
+**Elicitation** is where that stops and the server speaks first. Notice which
+tool it stops on: `delete_entry`, the one an annotation can only ever *describe*
+as destructive. A hint says "this is dangerous"; elicitation is the server doing
+something about it.

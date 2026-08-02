@@ -76,3 +76,10 @@ right reason — because `if uri in _subscribed` filtered entry 2 out.
 
 Stuck? Diff against
 [`03.solution.subscriptions`](../03.solution.subscriptions/server.py).
+
+## What's next?
+
+That's the last exercise in the course. Read
+`exercises/05.changes/FINISHED.md` — it names the throughline running under all
+five topics, and it is straight about what this course simplified on purpose,
+which is the part worth knowing before you build the real thing.

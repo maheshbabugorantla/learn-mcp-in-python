@@ -51,3 +51,9 @@ the render's cleanup path never runs and the flag stays `False`. Supply the
 callback and pass it to `render_wrapped_video`, and the flag flips to `True`.
 
 Stuck? Diff against `exercises/04.long-running-tasks/02.solution.cancellation/server.py`.
+
+## What's next?
+
+Everything in this topic hangs off a call that is still running. **Changes** is
+about the messages that don't: a tool appearing, a collection growing, a single
+record edited — facts a client cached earlier and has no way to know are wrong.
