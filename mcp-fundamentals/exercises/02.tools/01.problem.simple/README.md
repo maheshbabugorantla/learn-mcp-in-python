@@ -55,7 +55,8 @@ moves a real client makes.
 
 ## What’s next?
 
-Next you will add arguments and watch Python type hints become the JSON Schema
-the model uses to construct a call. The function signature is about to become
-more than an implementation detail: it becomes part of the model-facing
-contract.
+Your type hints already became the JSON Schema the model reads. Next you will
+look at what that schema still doesn't say, and describe each argument so it
+explains itself at the exact spot the model has to fill it in. The signature is
+about to become more than an implementation detail: it becomes part of the
+model-facing contract.

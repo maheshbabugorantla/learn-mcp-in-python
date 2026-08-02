@@ -52,5 +52,6 @@ present to a person.
 
 ## What’s next?
 
-The first step is deliberately small: publish one readable JSON resource before
-introducing templates and discovery.
+After the four resource steps, **Resource Tools** puts the two control surfaces
+in one reply: a tool performs the action and hands back the resource context it
+already has, either inline or as a link the client can follow.
