@@ -76,4 +76,4 @@ Stuck? Diff against `exercises/01.discovery/03.solution.pr/`.
 
 Next, **Initiating auth** puts a lock on `/mcp`. Everything in this topic was
 paperwork — three documents, and not one of them turns a single request away.
-That changes in about a line, and then the paperwork starts earning its keep.
+The next step is what starts sending people to read them.

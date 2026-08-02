@@ -74,5 +74,5 @@ Stuck? Diff against `exercises/05.scopes/03.solution.scope-hints/`.
 ## What's next?
 
 That's the last exercise. Read [`exercises/05.scopes/FINISHED.md`](../FINISHED.md)
-— it recaps what you built by hand and then shows you the SDK settings that do
-most of it for you, which is the right order to meet them in.
+— it recaps what you built by hand, then points at the SDK's `AuthSettings` and
+`TokenVerifier`, which do most of it for you.
