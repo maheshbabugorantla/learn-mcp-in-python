@@ -119,7 +119,7 @@ Run:
 uv run pytest exercises/04.resource-tools/01.problem.embedded
 ```
 
-## What’s next?
+## What's next?
 
 Next you will apply the opposite choice to `list_entries`: return lightweight
 resource links when the model is choosing among many records. The distinction

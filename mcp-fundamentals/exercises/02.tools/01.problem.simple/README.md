@@ -53,7 +53,7 @@ uv run pytest exercises/02.tools/01.problem.simple
 The test asks the server to list its tools, then calls yours — the same two
 moves a real client makes.
 
-## What’s next?
+## What's next?
 
 Your type hints already became the JSON Schema the model reads. Next you will
 look at what that schema still doesn't say, and describe each argument so it

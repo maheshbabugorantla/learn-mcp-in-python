@@ -69,7 +69,7 @@ uv run pytest exercises/02.tools/03.problem.errors
 The tests check both paths: a good call still returns the sum, and a bad one
 comes back as a readable error.
 
-## What’s next?
+## What's next?
 
 Next, the model needs context that is not an action. **Resources** introduces
 application-controlled, addressable data so a client can load journal content

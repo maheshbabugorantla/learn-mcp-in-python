@@ -64,7 +64,7 @@ templates: tag ids for `epicme://tags/{id}`, entry ids for
 uv run pytest exercises/03.resources/04.problem.completion
 ```
 
-## What’s next?
+## What's next?
 
 Next, **Resource Tools** brings the two control surfaces together. Tools can
 perform an action and return the resource context they already have, which is

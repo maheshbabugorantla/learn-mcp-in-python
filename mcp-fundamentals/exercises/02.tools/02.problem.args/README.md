@@ -73,7 +73,7 @@ uv run pytest exercises/02.tools/02.problem.args
 The test calls `list_tools()` and reads the generated schema — the same view the
 model gets.
 
-## What’s next?
+## What's next?
 
 Next you will make the tool fail deliberately. That introduces an MCP pattern
 that has no direct equivalent in a static OpenAPI document: a tool error is not

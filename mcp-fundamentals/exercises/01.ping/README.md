@@ -35,7 +35,7 @@ Run the exercise's tests from the repo root, one directory at a time:
 uv run pytest exercises/01.ping/01.problem.connect
 ```
 
-## What’s next?
+## What's next?
 
 Next, the server will become useful: **Tools** adds operations the model can
 choose to call. That is the first important MCP control boundary — the model

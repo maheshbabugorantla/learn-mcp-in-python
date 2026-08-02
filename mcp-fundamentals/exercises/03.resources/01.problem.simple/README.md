@@ -51,7 +51,7 @@ The test asks the server two things: does `epicme://tags` show up in
 `resources/list`, and does reading it give back the tags? Right now the answer
 to both is no.
 
-## What’s next?
+## What's next?
 
 Next you will move from one fixed address to a resource template. That is the
 MCP counterpart to declaring a parameterized route, but the value is discovered

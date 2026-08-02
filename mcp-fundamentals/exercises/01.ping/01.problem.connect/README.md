@@ -63,7 +63,7 @@ uv run pytest exercises/01.ping/01.problem.connect
 Stuck? `exercises/01.ping/01.solution.connect/server.py` has the answer — diff it
 against yours.
 
-## What’s next?
+## What's next?
 
 Next you will register the first model-controlled operation. A ping proves that
 the MCP peer is alive; a tool gives the model a deliberately described action to

@@ -50,7 +50,7 @@ loaded, while the model chooses when to invoke a tool. The exercises build the
 discovery path from one fixed URI to a family of records that a client can
 present to a person.
 
-## What’s next?
+## What's next?
 
 After the four resource steps, **Resource Tools** puts the two control surfaces
 in one reply: a tool performs the action and hands back the resource context it

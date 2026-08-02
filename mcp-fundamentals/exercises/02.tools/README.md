@@ -37,7 +37,7 @@ Run each exercise's tests from the repo root, one directory at a time:
 uv run pytest exercises/02.tools/01.problem.simple
 ```
 
-## What’s next?
+## What's next?
 
 After the three tool exercises, the course moves to **Resources**. Tools let the
 model ask the server to do something; resources let the application decide which

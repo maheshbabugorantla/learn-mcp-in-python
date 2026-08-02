@@ -77,7 +77,7 @@ uv run pytest exercises/05.prompts/02.problem.optimized-prompt
 
 Stuck? Diff against `exercises/05.prompts/02.solution.optimized-prompt/server.py`.
 
-## What’s next?
+## What's next?
 
 Next you will complete the prompt's `entry_id` argument. The final step connects
 the same server-wide completion dispatcher to a user-facing prompt, so a person

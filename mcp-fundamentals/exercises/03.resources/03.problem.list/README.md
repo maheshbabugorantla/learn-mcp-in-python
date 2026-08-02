@@ -65,7 +65,7 @@ Add a static resource at `epicme://entries` returning each entry's `id`,
 uv run pytest exercises/03.resources/03.problem.list
 ```
 
-## What’s next?
+## What's next?
 
 Next you will add completion for template arguments. The collection makes
 records discoverable in principle; completion makes choosing an id practical in

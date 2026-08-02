@@ -60,7 +60,7 @@ for both.
 uv run pytest exercises/04.resource-tools/02.problem.linked
 ```
 
-## What’s next?
+## What's next?
 
 Next, **Prompts** moves control to the person using the client. You will package
 expert guidance as a user-selected template, then reuse embedded resources to

@@ -63,7 +63,7 @@ Stuck? Diff against `exercises/05.prompts/03.solution.completion/server.py`.
 
 When it's green, you're done — read `exercises/05.prompts/FINISHED.md`.
 
-## What’s next?
+## What's next?
 
 This closes the fundamentals sequence: a persistent MCP peer exposes bounded
 model actions, application-selected context, and user-selected guidance. The
