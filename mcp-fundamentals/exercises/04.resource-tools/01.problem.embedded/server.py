@@ -16,6 +16,8 @@ from mcp.types import (
     PromptReference,
     ResourceTemplateReference,
     TextContent,
+    EmbeddedResource,
+    TextResourceContents,
 )
 from pydantic import Field
 
@@ -24,7 +26,9 @@ from db import DB, Entry
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage a personal journal.",
+    port=8080,
 )
+
 db = DB()
 db.seed()
 
@@ -35,8 +39,6 @@ db.seed()
 # this one function and both tools are fixed.
 def entry_result(entry: Entry, summary: str) -> CallToolResult:
     """A tool result carrying `summary` as text and `entry` as an embedded resource."""
-    # TODO: add the entry itself to this content list as an embedded resource.
-    #
     # Right now the model gets a sentence and nothing else — it would have to
     # turn around and call `resources/read` to see what was actually saved.
     # Put the record inline instead, as a second block after the text:
@@ -57,9 +59,18 @@ def entry_result(entry: Entry, summary: str) -> CallToolResult:
     #
     # Keep the text block first: it's what a human skimming the transcript
     # reads. The resource is the payload underneath it.
+    embedded_resource = EmbeddedResource(
+        type="resource",
+        resource=TextResourceContents(
+            uri=f"epicme://entries/{entry.id}",
+            mimeType="application/json",
+            text=json.dumps(entry.to_dict(), indent=2),
+        )
+    )
     return CallToolResult(
         content=[
             TextContent(type="text", text=summary),
+            embedded_resource,
         ]
     )
 
@@ -179,4 +190,4 @@ async def handle_completion(
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
