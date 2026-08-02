@@ -59,7 +59,7 @@ this version of the SDK, and worth seeing plainly rather than papering over.
 3. **subscriptions** — register subscribe/unsubscribe on the low-level server and
    notify per-URI on edit. Builds on step 2.
 
-Run one step at a time, from the repo root:
+Run one step at a time, from the course root:
 
 ```sh
 uv run pytest exercises/05.changes/01.problem.list-changed

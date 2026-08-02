@@ -75,7 +75,7 @@ return value, both audiences served.
    arrive as machine-readable data, not just prose. It builds directly on the
    annotated server from step 1.
 
-Run each step's tests from the repo root, one directory at a time:
+Run each step's tests from the course root, one directory at a time:
 
 ```sh
 uv run pytest exercises/01.advanced-tools/01.problem.annotations
