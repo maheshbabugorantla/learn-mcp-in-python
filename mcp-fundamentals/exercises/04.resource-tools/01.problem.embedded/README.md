@@ -79,24 +79,12 @@ This keeps the inline data connected to MCP's resource system. A client can
 associate it with the resource, display it, cache it, or read a fresh copy
 later. It is more than an arbitrary JSON blob.
 
-## Embed or link?
+## Embedding is not the only answer
 
-Embed a resource when the caller has already identified the data it needs:
-
-- `get_entry(1)` explicitly asks for entry 1.
-- `create_entry(...)` creates one entry and needs to return the assigned id.
-
-Return a resource link when the caller is choosing among many resources. For
-example, embedding 200 full journal entries in `list_entries` would make the
-response large even if only one entry is relevant. A link provides the URI and
-metadata first; the contents can be fetched only when selected.
-
-The design rule is simple:
-
-- **Embed** when the context is needed now.
-- **Link** when the context may or may not be needed.
-
-The next exercise applies that rule to `list_entries`.
+There is a second way to hand back a resource — a *link*, carrying the URI and
+some metadata but not the contents. Which one a given tool deserves is the whole
+of the next step, so hold that question for now. Both tools here answer with one
+entry the caller already asked for, which is the easy case.
 
 ## Your job
 
