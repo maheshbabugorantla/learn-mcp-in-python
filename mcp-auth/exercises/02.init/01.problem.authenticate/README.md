@@ -79,8 +79,11 @@ uv run pytest exercises/02.init/01.problem.authenticate
 ```
 
 The tests check that a bare request is rejected, that the 401 carries the header,
-that a request with *any* Authorization header gets through, and that discovery
-stayed public.
+that a request carrying a token gets through, and that discovery stayed public.
+
+Worth noticing what they *don't* check. Your `authorize` will accept any non-empty
+header, and no test here sends a garbage one — `test_a_request_with_a_header_gets_through`
+passes a real token. Closing that gap is what `03.auth-info` is for.
 
 Stuck? Diff against `exercises/02.init/01.solution.authenticate/`.
 
