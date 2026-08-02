@@ -31,7 +31,7 @@ Three steps:
 3. **errors** — let a tool fail on purpose, and see why a raised exception is a
    message to the model rather than a crash.
 
-Run each exercise's tests from the repo root, one directory at a time:
+Run each exercise's tests from the `mcp-fundamentals` directory, one at a time:
 
 ```sh
 uv run pytest exercises/02.tools/01.problem.simple

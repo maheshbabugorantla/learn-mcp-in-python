@@ -29,7 +29,7 @@ Three steps:
 3. **completion** — let the client suggest valid values for the prompt's
    `entry_id` argument, so nobody has to memorize an id.
 
-Run each exercise's tests from the repo root, one directory at a time:
+Run each exercise's tests from the `mcp-fundamentals` directory, one at a time:
 
 ```sh
 uv run pytest exercises/05.prompts/01.problem.prompts

@@ -29,7 +29,7 @@ arguments and returns nothing. That's exactly why it's a good first target: if a
 ping comes back, the transport works, the handshake completed, and both sides
 agree they're speaking MCP. Everything else in this course is built on that.
 
-Run the exercise's tests from the repo root, one directory at a time:
+Run the exercise's tests from the `mcp-fundamentals` directory, one at a time:
 
 ```sh
 uv run pytest exercises/01.ping/01.problem.connect
