@@ -65,3 +65,9 @@ The tests check both directions: a bad token gets the error param, a missing
 token doesn't, and both still get `resource_metadata`.
 
 Stuck? Diff against `exercises/03.auth-info/03.solution.error/`.
+
+## What's next?
+
+Next, **The user** spends what introspection has been producing all along. Every
+caller still gets the same journal today — your server works out exactly who is
+asking and then hands them somebody else's diary.

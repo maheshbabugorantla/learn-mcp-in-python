@@ -86,3 +86,9 @@ The tests send a token that was never issued, and revoke a good one mid-flight.
 Both should come back 401, not 500.
 
 Stuck? Diff against `exercises/03.auth-info/02.solution.active/`.
+
+## What's next?
+
+Next you give the 401 a reason. There's a wrinkle worth seeing coming: a reason
+is only honest when the caller actually sent something, so the same handler has
+to say different things depending on what arrived.

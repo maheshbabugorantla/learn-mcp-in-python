@@ -43,3 +43,9 @@ uv run pytest exercises/04.user/01.problem.token
 
 No server to start — the tests run your app, and the authorization server, in
 process.
+
+## What's next?
+
+**Scopes** asks the second question a token answers. This topic settles who is
+calling and takes for granted that whoever they are, they may do anything. A
+token issued for reading should not be able to empty the journal.

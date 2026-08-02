@@ -49,3 +49,10 @@ uv run pytest exercises/02.init/01.problem.authenticate
 
 No server to start — the tests run the app, and the authorization server, in
 process.
+
+## What's next?
+
+**Auth info** is where the token stops being a shape and becomes a fact. Both
+steps here treat the `Authorization` header as something to check for rather than
+something to read. Next your server asks the authorization server what the string
+it was handed actually stands for.

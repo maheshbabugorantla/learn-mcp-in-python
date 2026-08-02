@@ -69,3 +69,9 @@ uv run pytest exercises/01.discovery/02.problem.as
 ```
 
 Stuck? Diff against `exercises/01.discovery/02.solution.as/`.
+
+## What's next?
+
+Next comes the other document, the one about your own server. It is shorter, but
+it has a wrinkle this one didn't: the resource identifier has to be built from
+the request that asked for it, not typed in as a constant.

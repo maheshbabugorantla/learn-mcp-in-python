@@ -87,3 +87,9 @@ uv run pytest exercises/02.init/02.problem.params
 ```
 
 Stuck? Diff against `exercises/02.init/02.solution.params/auth.py`.
+
+## What's next?
+
+Next, **Auth info** goes and finds out what the token means. Your server has
+never once looked at the string it is handed — it only knows a header was there.
+The authorization server that issued it is the one that can say more.

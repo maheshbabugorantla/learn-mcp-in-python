@@ -53,3 +53,9 @@ uv run pytest exercises/05.scopes/01.problem.check-scopes
 
 No server to start — the tests run your app, and the authorization server, in
 process.
+
+## What's next?
+
+This is the last topic. After it, `mcp-ui` and `mcp-advanced-features` branch off
+the same fundamentals base in either order — neither one needs any of the auth
+machinery you built here.

@@ -83,3 +83,9 @@ that a request with *any* Authorization header gets through, and that discovery
 stayed public.
 
 Stuck? Diff against `exercises/02.init/01.solution.authenticate/`.
+
+## What's next?
+
+Next you make that 401 answerable. A client you turn away needs to know which
+document to go read before it tries again, and right now the header names a realm
+and stops there.

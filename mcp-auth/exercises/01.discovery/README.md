@@ -61,3 +61,9 @@ uv run pytest exercises/01.discovery/01.problem.cors
 One at a time matters — pointing pytest at two exercise directories at once
 makes it trip over the two identically-named `test_app.py` modules. No server
 needs to be running. The authorization server starts up inside the test process.
+
+## What's next?
+
+**Initiating auth** is where your server starts refusing people. Everything here
+answers questions a client asks *before* it tries anything. Next it tries
+something, gets turned away, and has to be told how to come back with a token.

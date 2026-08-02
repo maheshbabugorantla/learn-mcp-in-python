@@ -79,3 +79,9 @@ Olivia, the `epicme://user` resource reads, and `fetch_user` gets a profile back
 from the authorization server directly.
 
 Stuck? Diff against `exercises/04.user/02.solution.user/`.
+
+## What's next?
+
+Next, **Scopes** puts limits inside a token that is already valid. Right now
+authenticating gets you everything: a client that asked for nothing but read
+access to the journal can empty it.
