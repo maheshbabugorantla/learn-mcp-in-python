@@ -18,15 +18,17 @@ itself?
 ## The problem with returning only text
 
 `create_entry` already receives the complete `Entry` after saving it, including
-the database-assigned id. But its current result only says:
+the database-assigned id. But its current result is one sentence:
 
 ```text
-Entry "A quiet morning" created.
+Entry "A quiet morning" created (id 1).
 ```
 
-If the model needs the id or another field, it must make another request to
-`epicme://entries/3`. The server already has the data, so returning only prose
-loses useful structured context and creates an avoidable round-trip.
+That sentence carries the title and the id, and nothing else. If the model wants
+the mood, the content, or the tags it just stored, it has to turn around and
+read `epicme://entries/1` — for data the server was holding a microsecond ago.
+Returning only prose throws away structured context and buys an avoidable
+round-trip.
 
 ## The MCP design
 
@@ -101,21 +103,27 @@ The next exercise applies that rule to `list_entries`.
 `create_entry` and `get_entry` already pass their entries to the shared helper
 `entry_result()`. The helper currently returns only the `TextContent` summary.
 
-Update `entry_result()` so that it returns:
-
-1. the existing text summary first; and
-2. an `EmbeddedResource` containing the entry serialized with
-   `json.dumps(entry.to_dict(), indent=2)`.
-
-Use these values for the embedded resource:
+Update `entry_result()` so it returns the existing text summary first, then the
+entry itself as a second block:
 
 ```python
-uri=f"epicme://entries/{entry.id}"
-
+EmbeddedResource(
+  type="resource",
+  resource=TextResourceContents(
+    uri=f"epicme://entries/{entry.id}",
+    mimeType="application/json",
+    text=json.dumps(entry.to_dict(), indent=2),
+  ),
+)
 ```
 
-Because both tools use `entry_result()`, one change improves both
-`create_entry` and `get_entry`.
+All three values matter. The `uri` is the address the entry lives at, so the
+client can tie the inline copy back to the resource. The `mimeType` says the
+payload is JSON, so nobody has to sniff it. The `text` is the record.
+`EmbeddedResource` and `TextResourceContents` both come from `mcp.types`.
+
+Because both tools go through `entry_result()`, one change improves
+`create_entry` and `get_entry` at once.
 
 Run:
 
