@@ -43,7 +43,7 @@ that follows.
 This topic starts with the simplest content type there is: raw HTML. You build an
 HTML string, you tag it `text/html`, and the client renders it as-is.
 
-Run the exercise's tests from the repo root:
+Run the exercise's tests from the `mcp-ui` directory:
 
 ```sh
 uv run pytest exercises/01.simple/01.problem.raw-html

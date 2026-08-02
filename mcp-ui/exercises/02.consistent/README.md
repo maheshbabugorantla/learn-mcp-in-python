@@ -34,7 +34,7 @@ The `framework=react` parameter rides along in the mimeType the way
 runtime the script expects. The client reads that mimeType, sees it's a
 remote-dom script, and runs it against its own elements instead of parsing HTML.
 
-Run the exercise's tests from the repo root:
+Run the exercise's tests from the `mcp-ui` directory:
 
 ```sh
 uv run pytest exercises/02.consistent/01.problem.remote-dom
