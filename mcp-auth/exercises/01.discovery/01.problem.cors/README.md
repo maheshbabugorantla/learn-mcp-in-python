@@ -67,5 +67,5 @@ Stuck? Diff against `exercises/01.discovery/01.solution.cors/`.
 ## What's next?
 
 Next you serve the first of this topic's two documents — and it describes the
-authorization server, not you. Your server's job there is mostly to know where to
-forward the question.
+authorization server rather than your own. Your server's job there is mostly to
+know where to forward the question.

@@ -78,6 +78,6 @@ start; the tests run your app and the authorization server in process.
 ## What's next?
 
 **The user** is where authentication turns into authorization. These three steps
-end with your server certain about who is calling — and still handing every one
+end with the server certain about who is calling — and still handing every one
 of them the same journal. Knowing who somebody is and acting on it are two
 different pieces of work.

@@ -69,5 +69,5 @@ Stuck? Diff against `exercises/03.auth-info/03.solution.error/`.
 ## What's next?
 
 Next, **The user** spends what introspection has been producing all along. Every
-caller still gets the same journal today — your server works out exactly who is
-asking and then hands them somebody else's diary.
+caller still gets the same journal today — the server works out exactly who is
+asking, and then hands them somebody else's diary.

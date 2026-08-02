@@ -90,6 +90,6 @@ Stuck? Diff against `exercises/02.init/02.solution.params/`.
 
 ## What's next?
 
-Next, **Auth info** goes and finds out what the token means. Your server has
-never once looked at the string it is handed — it only knows a header was there.
-The authorization server that issued it is the one that can say more.
+Next, **Auth info** goes and finds out what the token means. Your server hasn't
+looked at the string it is handed yet — it only knows a header was there. The
+authorization server that issued it is the one that can say more.
