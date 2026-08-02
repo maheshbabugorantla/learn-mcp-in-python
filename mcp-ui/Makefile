@@ -1,7 +1,7 @@
 # This course — run `make` to see targets.
 #
 # The everyday loop is one exercise at a time:
-#   make test-exercise E=exercises/01.ping/01.problem.connect
+#   make test-exercise E=exercises/01.simple/01.problem.raw-html
 # Edit that exercise's server.py, re-run, watch it go from red to green.
 
 .DEFAULT_GOAL := help
@@ -17,7 +17,7 @@ install: ## Install this course's dependencies (uv sync)
 test-exercise: ## Test one exercise: make test-exercise E=exercises/<topic>/<dir>
 	@test -n "$(E)" || { \
 		echo "Name the exercise you're working on, e.g.:"; \
-		echo "  make test-exercise E=exercises/01.ping/01.problem.connect"; \
+		echo "  make test-exercise E=exercises/01.simple/01.problem.raw-html"; \
 		exit 1; }
 	@uv run pytest "$(E)"
 
