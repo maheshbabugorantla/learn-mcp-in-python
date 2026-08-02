@@ -86,7 +86,7 @@ step. Then:
 uv run pytest exercises/02.init/02.problem.params
 ```
 
-Stuck? Diff against `exercises/02.init/02.solution.params/auth.py`.
+Stuck? Diff against `exercises/02.init/02.solution.params/`.
 
 ## What's next?
 

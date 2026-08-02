@@ -33,7 +33,7 @@ deciding whether to click yes. [RFC 6749
 §3.3](https://datatracker.ietf.org/doc/html/rfc6749#section-3.3) defines them as
 a space-separated list of case-sensitive strings the server makes up, and that's
 genuinely all the spec has to say. The [MCP authorization
-spec](https://modelcontextprotocol.io/specification/draft/basic/authorization)
+spec](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
 builds on that with the discovery documents you already wrote.
 
 The interesting part is that scopes show up in three different places in your
