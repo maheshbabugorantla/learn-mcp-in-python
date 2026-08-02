@@ -38,7 +38,7 @@ uv run pytest exercises/05.prompts/01.problem.prompts
 ## What's next?
 
 Prompts are the last primitive, so these three steps finish `mcp-fundamentals`.
-The other three courses branch off it in any order and build on this contract
-instead of re-teaching it: `mcp-auth` puts users and OAuth 2.1 in front of the
-server, `mcp-ui` gives tool results a face that a client can render, and
-`mcp-advanced-features` lets the server start the conversation.
+The other three courses each start from here and can be taken in any order:
+`mcp-auth` puts users and OAuth 2.1 in front of the server, `mcp-ui` gives tool
+results a face that a client can render, and `mcp-advanced-features` lets the
+server start the conversation.

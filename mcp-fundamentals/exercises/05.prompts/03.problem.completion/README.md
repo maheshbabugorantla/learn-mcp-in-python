@@ -65,7 +65,6 @@ When it's green, you're done — read `exercises/05.prompts/FINISHED.md`.
 
 ## What's next?
 
-This closes the fundamentals sequence: a persistent MCP peer exposes bounded
-model actions, application-selected context, and user-selected guidance. The
-next course can build on that contract with authentication, richer workflows,
-and UI concerns rather than re-teaching the protocol primitives.
+Three primitives, and you have all of them. Whichever of `mcp-auth`, `mcp-ui`
+and `mcp-advanced-features` you pick up next, it starts from a server that looks
+like the one you just finished.
