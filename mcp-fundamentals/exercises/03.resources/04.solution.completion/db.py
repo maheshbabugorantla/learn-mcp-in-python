@@ -111,6 +111,10 @@ class DB:
         rows = self._conn.execute("SELECT * FROM entries ORDER BY id").fetchall()
         return [Entry(**dict(r), tags=self.get_entry_tags(r["id"])) for r in rows]
 
+    def get_entry_ids(self) -> list[int]:
+        rows = self._conn.execute("SELECT id FROM entries ORDER BY id").fetchall()
+        return [r["id"] for r in rows]
+
     def update_entry(self, entry_id: int, **fields) -> Entry | None:
         allowed = {
             "title", "content", "mood", "location", "weather",
@@ -149,6 +153,10 @@ class DB:
     def get_tags(self) -> list[Tag]:
         rows = self._conn.execute("SELECT * FROM tags ORDER BY id").fetchall()
         return [Tag(**dict(r)) for r in rows]
+
+    def get_tag_ids(self) -> list[int]:
+        rows = self._conn.execute("SELECT id FROM tags ORDER BY id").fetchall()
+        return [r["id"] for r in rows]
 
     def update_tag(self, tag_id: int, **fields) -> Tag | None:
         updates = {
