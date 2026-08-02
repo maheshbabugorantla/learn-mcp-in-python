@@ -5,7 +5,7 @@ Your job: make the `entry_id` argument suggest real ids.
 ## The gap
 
 Your prompt asks for an `entry_id`. A person picking it from a menu sees an empty
-text box and is expected to know that entry 3 is the one about the fog. Nobody
+text box and is expected to know that entry 1 is the one about the fog. Nobody
 knows that. They'd have to go list the entries, find the id, come back, and type
 it — which is exactly the busywork this prompt was supposed to save.
 
