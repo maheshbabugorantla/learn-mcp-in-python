@@ -5,7 +5,7 @@ Run `uv run pytest exercises/04.resource-tools/02.problem.linked` until it passe
 """
 
 import json
-from typing import Annotated
+from typing import Annotated, Iterator
 
 from mcp.server.fastmcp import FastMCP
 from mcp.types import (
@@ -18,6 +18,7 @@ from mcp.types import (
     ResourceTemplateReference,
     TextContent,
     TextResourceContents,
+    ResourceLink
 )
 from pydantic import Field
 
@@ -26,6 +27,7 @@ from db import DB, Entry
 mcp = FastMCP(
     name="epicme",
     instructions="This lets you read and manage a personal journal.",
+    port=8080
 )
 db = DB()
 db.seed()
@@ -111,9 +113,27 @@ def list_entries() -> CallToolResult:
     #
     # `title` matters more than it looks: "epicme://entries/7" tells nobody
     # anything, so without it there's no way to pick the right link.
+
+    def _gen_resource_link_for_entry(entry: Entry) -> ResourceLink | None:
+        if not entry:
+            return None
+
+        return ResourceLink(
+            type="resource_link",
+            uri=f"epicme://entries/{entry.id}",
+            name=f"entry-{entry.id}",
+            title=entry.title,
+            description=f"Journal entry: {entry.title}",
+            mimeType="application/json"
+        )
+
+    def _gen_resource_link_for_entries() -> Iterator[ResourceLink]:
+        return map(lambda entry: _gen_resource_link_for_entry(entry), entries)
+
     return CallToolResult(
         content=[
             TextContent(type="text", text=f"Found {len(entries)} entries."),
+            *_gen_resource_link_for_entries()
         ]
     )
 
@@ -200,4 +220,4 @@ async def handle_completion(
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
