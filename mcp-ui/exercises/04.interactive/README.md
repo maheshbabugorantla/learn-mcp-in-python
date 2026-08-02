@@ -81,6 +81,6 @@ in Python is driving something in that file, and this is where you watch it move
 ## What's next?
 
 You have just read the receiving end. `waitForRenderData()` sits there waiting on
-data that nothing in your Python has ever sent — every page so far has gone and
-fetched what it needed on its own. **Initial render data** is where the server
-finally puts something in its hand.
+data your Python hasn't sent yet — every page so far has gone and fetched what it
+needed on its own. **Initial render data** is where the server puts something in
+its hand.

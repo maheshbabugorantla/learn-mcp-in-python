@@ -59,4 +59,4 @@ Stuck? Diff your `server.py` against the sibling
 
 Next, **Consistent UI** rewrites this same tool around a different content type.
 The block shape and the `ui://` URI stay put; the mimeType changes, and so does
-what rides in `resource.text`. That is the spine you just used, doing its job.
+what rides in `resource.text`.
