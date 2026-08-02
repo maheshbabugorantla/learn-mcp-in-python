@@ -17,7 +17,8 @@ mcp = FastMCP(
 The `name` is the machine-readable id other programs see. The `instructions` are
 for the AI model — a sentence about what this server is *for*, so it knows when
 your server is worth reaching for at all. It's easy to skip this because nothing
-breaks without it. **DON'T**. It's the first thing the model learns about the mcp server.
+breaks without it. Don't. It's the first thing the model learns about your
+server.
 
 ## Running it over stdio
 
