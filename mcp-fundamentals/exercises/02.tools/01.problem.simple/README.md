@@ -52,3 +52,10 @@ uv run pytest exercises/02.tools/01.problem.simple
 
 The test asks the server to list its tools, then calls yours — the same two
 moves a real client makes.
+
+## What’s next?
+
+Next you will add arguments and watch Python type hints become the JSON Schema
+the model uses to construct a call. The function signature is about to become
+more than an implementation detail: it becomes part of the model-facing
+contract.

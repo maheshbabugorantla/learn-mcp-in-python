@@ -55,3 +55,10 @@ uv run pytest exercises/03.resources/02.problem.template
 Watch where these show up. Templates are listed under
 `resources/templates/list`, **not** `resources/list` — that difference is the
 whole subject of the next step.
+
+## What’s next?
+
+Next you will solve the other half of the problem: a template explains how to
+read an item, but it does not enumerate which ids exist. A collection resource
+will provide that index so clients can discover real records instead of guessing
+URI values.

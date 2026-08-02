@@ -42,3 +42,15 @@ save you a lot of confusion later:
 Over the next four steps you'll build all of it: a static resource, two
 templates, a collection resource that makes individual records discoverable,
 and autocomplete for template placeholders.
+
+The REST analogy is useful but incomplete. A resource resembles a `GET`-able
+representation, and a URI template resembles a parameterized route. MCP adds a
+control decision around that address: the application chooses when context is
+loaded, while the model chooses when to invoke a tool. The exercises build the
+discovery path from one fixed URI to a family of records that a client can
+present to a person.
+
+## What’s next?
+
+The first step is deliberately small: publish one readable JSON resource before
+introducing templates and discovery.

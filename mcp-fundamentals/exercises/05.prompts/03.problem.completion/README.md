@@ -62,3 +62,10 @@ uv run pytest exercises/05.prompts/03.problem.completion
 Stuck? Diff against `exercises/05.prompts/03.solution.completion/server.py`.
 
 When it's green, you're done — read `exercises/05.prompts/FINISHED.md`.
+
+## What’s next?
+
+This closes the fundamentals sequence: a persistent MCP peer exposes bounded
+model actions, application-selected context, and user-selected guidance. The
+next course can build on that contract with authentication, richer workflows,
+and UI concerns rather than re-teaching the protocol primitives.

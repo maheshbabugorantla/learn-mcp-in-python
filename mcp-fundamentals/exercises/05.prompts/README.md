@@ -34,3 +34,10 @@ Run each exercise's tests from the repo root, one directory at a time:
 ```sh
 uv run pytest exercises/05.prompts/01.problem.prompts
 ```
+
+## What’s next?
+
+This completes the course's control model: the model chooses tools, the
+application chooses resources, and the person chooses prompts. The final three
+exercises show how those choices cooperate in one workflow rather than compete
+as three unrelated APIs.
