@@ -62,3 +62,9 @@ uv run pytest exercises/05.prompts/03.problem.completion
 Stuck? Diff against `exercises/05.prompts/03.solution.completion/server.py`.
 
 When it's green, you're done — read `exercises/05.prompts/FINISHED.md`.
+
+## What's next?
+
+Three primitives, and you have all of them. Whichever of `mcp-auth`, `mcp-ui`
+and `mcp-advanced-features` you pick up next, it starts from a server that looks
+like the one you just finished.

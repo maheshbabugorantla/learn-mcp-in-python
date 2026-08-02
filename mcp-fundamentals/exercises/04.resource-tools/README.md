@@ -50,3 +50,15 @@ Two steps:
 
 The interesting part is step 2, where you have to decide which one a given tool
 deserves.
+
+This is the point where MCP's primitives start to compose rather than resemble
+separate endpoint categories. The model chooses the tool, the application can
+load resources, and the tool result can carry resource context across that
+boundary. The next exercises make that choice concrete: inline context for one
+known record, then a link when the result is a selection among many records.
+
+## What's next?
+
+After both steps, **Prompts** hands control to a third party: the person using
+the client. They pick a prompt from a menu, and the server answers with messages
+that can carry the same embedded resources you build here.

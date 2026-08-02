@@ -67,3 +67,9 @@ uv run pytest exercises/05.prompts/01.problem.prompts
 ```
 
 Stuck? Diff against `exercises/05.prompts/01.solution.prompts/server.py`.
+
+## What's next?
+
+Next you will make the prompt carry the entry and tag data itself. That removes
+lookup work from the model and demonstrates that an embedded resource belongs in
+a prompt message as naturally as it belongs in a tool result.

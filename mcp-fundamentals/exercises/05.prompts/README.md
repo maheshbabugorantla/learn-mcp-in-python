@@ -29,8 +29,16 @@ Three steps:
 3. **completion** — let the client suggest valid values for the prompt's
    `entry_id` argument, so nobody has to memorize an id.
 
-Run each exercise's tests from the repo root, one directory at a time:
+Run each exercise's tests from the `mcp-fundamentals` directory, one at a time:
 
 ```sh
 uv run pytest exercises/05.prompts/01.problem.prompts
 ```
+
+## What's next?
+
+Prompts are the last primitive, so these three steps finish `mcp-fundamentals`.
+The other three courses each start from here and can be taken in any order:
+`mcp-auth` puts users and OAuth 2.1 in front of the server, `mcp-ui` gives tool
+results a face that a client can render, and `mcp-advanced-features` lets the
+server start the conversation.

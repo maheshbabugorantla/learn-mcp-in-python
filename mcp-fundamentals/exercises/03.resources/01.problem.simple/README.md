@@ -50,3 +50,9 @@ uv run pytest exercises/03.resources/01.problem.simple
 The test asks the server two things: does `epicme://tags` show up in
 `resources/list`, and does reading it give back the tags? Right now the answer
 to both is no.
+
+## What's next?
+
+Next you will move from one fixed address to a resource template. That is the
+MCP counterpart to declaring a parameterized route, but the value is discovered
+through `resources/templates/list` rather than assumed by a hand-written client.

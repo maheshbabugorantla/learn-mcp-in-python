@@ -59,3 +59,9 @@ for both.
 ```sh
 uv run pytest exercises/04.resource-tools/02.problem.linked
 ```
+
+## What's next?
+
+Next, **Prompts** moves control to the person using the client. You will package
+expert guidance as a user-selected template, then reuse embedded resources to
+give the model the context it needs without making it rediscover known data.

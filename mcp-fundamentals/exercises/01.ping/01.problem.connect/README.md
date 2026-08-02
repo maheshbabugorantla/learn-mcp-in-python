@@ -17,7 +17,8 @@ mcp = FastMCP(
 The `name` is the machine-readable id other programs see. The `instructions` are
 for the AI model — a sentence about what this server is *for*, so it knows when
 your server is worth reaching for at all. It's easy to skip this because nothing
-breaks without it. Don't. It's the first thing the model learns about you.
+breaks without it. Don't. It's the first thing the model learns about your
+server.
 
 ## Running it over stdio
 
@@ -62,3 +63,9 @@ uv run pytest exercises/01.ping/01.problem.connect
 
 Stuck? `exercises/01.ping/01.solution.connect/server.py` has the answer — diff it
 against yours.
+
+## What's next?
+
+Next you will register the first model-controlled operation. A ping proves that
+the MCP peer is alive; a tool gives the model a deliberately described action to
+choose when the user's request needs it.
