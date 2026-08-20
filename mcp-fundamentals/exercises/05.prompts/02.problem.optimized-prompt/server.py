@@ -235,14 +235,21 @@ def suggest_tags(
     entry_id: Annotated[
         str, Field(description="The ID of the journal entry to suggest tags for")
     ],
-) -> str:
-    return (
+) -> list[base.UserMessage]:
+    base_instructions = (
         f"Look up the journal entry with ID {entry_id} and read it. "
         f"Then look at the tags that already exist in the journal. "
         f"Suggest which of those tags fit this entry, and suggest any new tags "
         f"worth creating. Explain your reasoning briefly, and ask me to approve "
         f"before changing anything."
     )
+    entry = db.get_entry(int(entry_id))
+    tags = list(map(lambda tag: {"name": tag.name}, db.get_tags()))
+    return [
+        base.UserMessage(base_instructions),
+        base.UserMessage(_embed(f"epicme://entries/{entry_id}", entry.to_dict())),
+        base.UserMessage(_embed("epicme://tags", tags))
+    ]
 
 
 @mcp.completion()
