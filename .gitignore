@@ -5,7 +5,10 @@ __pycache__/
 *.db
 
 # Local Claude Code state (plans, memory, settings) — never published.
-.claude/
+# Skills and agents ARE published: they encode this repo's working conventions.
+.claude/*
+!.claude/skills/
+!.claude/agents/
 
 # macOS
 .DS_Store
