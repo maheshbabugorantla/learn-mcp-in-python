@@ -5,6 +5,18 @@ on:
   pull_request:
 
 jobs:
+  imports:
+    name: no private SDK imports
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # The SDK's in-memory transport lives in a private module. Reaching for it
+      # would break without a major-version signal, and this repo teaches by
+      # example -- the exercises use the public `Client` instead.
+      - name: Check for private mcp imports
+        run: make check-imports
+
   solutions:
     name: ${{ matrix.course }}
     runs-on: ubuntu-latest
