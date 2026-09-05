@@ -4,9 +4,9 @@ Your job: register your first tool.
 Run `uv run pytest exercises/02.tools/01.problem.simple` until it passes.
 """
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="epicme",
     instructions="This lets you solve math problems.",
 )
@@ -15,7 +15,7 @@ mcp = FastMCP(
 # TODO: Register an `add` tool.
 #
 # `@mcp.tool()` turns a plain Python function into something an AI model can
-# call. FastMCP reads the function to build the tool: the function's name
+# call. MCPServer reads the function to build the tool: the function's name
 # becomes the tool's name, and its docstring becomes the description the model
 # uses to decide whether this tool is what it needs. Write that docstring for
 # the model, not for your teammates.

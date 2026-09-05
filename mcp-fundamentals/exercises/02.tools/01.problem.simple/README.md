@@ -1,6 +1,6 @@
 # Your first tool
 
-Right now the server starts, handshakes, and answers a ping. It cannot *do*
+Right now the server starts and a client can connect to it. It cannot *do*
 anything. Let's give it a tool.
 
 ## What a tool actually is
@@ -17,7 +17,7 @@ def add(first_number: int, second_number: int) -> str:
 ```
 
 That's it. No schema file, no registration table, no separate manifest to keep in
-sync. FastMCP reads the function itself: the name becomes the tool's name, and
+sync. MCPServer reads the function itself: the name becomes the tool's name, and
 the docstring becomes the description.
 
 ## Why the docstring matters more than usual
