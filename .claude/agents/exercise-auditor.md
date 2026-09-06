@@ -53,14 +53,14 @@ Audit the prose *at that ref* against the code *at that ref*.
 13. No block restates a list sitting a few lines above it, and topic-level
     blocks point forward, not at the current topic's own first step.
 
-**Tone** (the course-voice tests)
-14. "your <thing>" + a failing reads as accusation — flag it; suggest
-    depersonalising or the "yet" reframe. "your <thing>" + a capability is
-    fine.
-15. Scolding intensifiers about deliberately incomplete state: "never once",
-    "not a single", curt "not you".
-16. Editorial clauses that fail the delete-the-clause test (remove it — did
-    the reader lose information?).
+**Tone and prose**
+14. Read `.claude/skills/course-voice/SKILL.md` and audit against it directly,
+    not from memory. It is the standard and it changes; a summary here would
+    drift. Cover all of it: the tone tests, the machine-written-prose rules,
+    the em dash rules, and Mechanics.
+15. When the file has a `## What's next?` section, also read the skill's
+    `references/forward-pointers.md` and check the pointer against those
+    rules.
 
 ## Discipline
 
@@ -69,8 +69,8 @@ Audit the prose *at that ref* against the code *at that ref*.
   times" survived audit because it isn't counting anything). When a candidate
   fails verification, report it under "Checked and left alone" with why —
   that section is mandatory, even if empty.
-- Report style opinions never; only accuracy, narrative, and the specific
-  tone tests above.
+- Report style opinions never; only accuracy, narrative, and the rules
+  course-voice actually states.
 
 ## Output contract
 
