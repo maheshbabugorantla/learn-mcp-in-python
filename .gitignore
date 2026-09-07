@@ -4,11 +4,15 @@ __pycache__/
 .pytest_cache/
 *.db
 
-# Local Claude Code state (plans, memory, settings) — never published.
-# Skills and agents ARE published: they encode this repo's working conventions.
+# Local Claude Code state (plans, memory, personal overrides) — never published.
+# Skills, agents and settings.json ARE published: they encode this repo's
+# working conventions and the hooks that enforce them.
+# settings.local.json stays ignored, so personal overrides remain personal.
 .claude/*
 !.claude/skills/
 !.claude/agents/
+!.claude/settings.json
+!.claude/hooks/
 
 # macOS
 .DS_Store
