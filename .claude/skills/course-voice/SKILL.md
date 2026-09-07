@@ -1,6 +1,6 @@
 ---
 name: course-voice
-description: The voice and accuracy rules for writing or editing any prose under */exercises/ — lesson READMEs, docstrings, FINISHED.md. Load BEFORE writing, not after review finds problems.
+description: Voice, accuracy, and punctuation rules for every piece of prose under */exercises/ — lesson READMEs, module docstrings, FINISHED.md. Load this BEFORE writing or editing any lesson text, never after a review has already found problems. Use it whenever you touch course material, write a "What's next?" pointer, or review someone else's lesson prose.
 ---
 
 # Course voice
@@ -54,40 +54,71 @@ because tools-vs-endpoints is a real confusion there; the other three courses
 got none, because none was true enough. Never port a parallel across lessons,
 and never stretch to prove one — no parallel beats a forced parallel.
 
-## Forward pointers (`## What's next?`)
+## Machine-written prose
 
-Grammar: straight apostrophe, appended as the file's last section (after the
-"Stuck?" line and any FINISHED.md pointer).
+Agents write lesson prose here too, and everything above was written for
+human authorship. These rules cover the ways machine-written prose goes
+wrong.
 
-- Topic README → the next **topic** and why it follows.
-- Problem README → the next **exercise** in the topic; the topic's last
-  exercise crosses to the next topic.
-- Terminal exercise → that course's `FINISHED.md`. Last topic → the sibling
-  courses (they branch off fundamentals independently, any order).
+- **No AI vocabulary**: delve, crucial, robust, comprehensive, nuanced,
+  pivotal, showcase, tapestry, testament, underscore, vibrant, foster,
+  intricate, moreover, furthermore, additionally, garner, interplay.
+- **No fancy ways to say "is"**: "serves as", "stands as", "boasts",
+  "features". Say "is" or "has".
+- **No "not just X, but Y."** State the point directly.
+- **No filler**: "in order to" is "to", "due to the fact that" is "because",
+  and "it is important to note that" is deletable.
+- **No abstract metaphor nouns**: substrate, wedge, vantage, nexus, bedrock,
+  scaffolding, paradigm, north star, flywheel. Name the concrete thing.
+- **No adverb propping up a weak verb.** "significantly improves" is the
+  measured delta; "runs quickly" is "is fast", or the number.
+- **Prefer the plain word**: use over utilize, use over leverage, help over
+  facilitate, many over numerous.
 
-Hard rules, each learned from a shipped defect:
+## Em dashes
 
-1. **Verify the promise.** The pointer must name something the next lesson
-   actually does — check its README, work files, and tests, never the
-   directory name. ("Next you will add arguments" shipped when `add` already
-   had both arguments; the next lesson was about *describing* them.)
-2. **No paraphrase of the solution twin.** Solution READMEs often end with
-   their own transition. A learner reads problem → solution → next problem;
-   read the twin's closing line first and take a different angle.
-3. **No spoilers.** Never pre-answer a judgement the next exercise exists to
-   teach. (Step 1's README once handed over the embed-vs-link decision rule
-   that step 2 was built around.)
-4. **No restating a list ten lines above**, and no re-describing the current
-   topic when the convention points forward.
+Two uses are warranted. Rewrite every other one.
+
+**A term, then its gloss**, in a list item, numbered step, or definition:
+
+- `mime_type` — what you're actually returning.
+
+A colon there reads as "a list follows", and a comma buries the term.
+
+**A diagnosis, then the instruction**, in assertion messages, TODO blocks,
+and "Stuck?" lines:
+
+> The server lists no `add` tool — register one with @mcp.tool().
+
+The dash makes the pivot one beat instead of two. This is the course's
+central teaching move, and the reason the dash survives here at all.
+
+Rewrite the rest:
+
+- **Joining two independent clauses.** Use a full stop, or a colon when the
+  second clause explains the first.
+- **A mid-sentence aside.** Use commas, or split the sentence.
+- **Two on one line.** If a paragraph reaches for two, neither is earning
+  its place.
+- **In a heading, a title, or a list label.** Never.
+
+When you edit a lesson file, bring its dashes into line with these rules.
+Do not open a file only to change punctuation.
 
 ## Mechanics
 
-- Straight apostrophes only — the repo has zero curly ones.
+- Straight apostrophes only. Never a curly one.
 - Match the file's course idiom: mcp-auth problem READMEs use `## Your task`
   verbatim; mcp-advanced-features uses `## What you'll see until it's built` /
   `## What you'll see fail`; don't import one course's headings into another.
 - Don't restate a course's refrain (mcp-ui's "render this / the mimeType is
-  how the client knows" already appears 4×; reinforce, never repeat).
+  how the client knows"); reinforce it, never repeat it.
 - In mcp-advanced-features, topics do NOT accumulate — every topic's server
   resets to the base journal. Cross-topic prose hands off conceptually, never
   "add this to the server you just built."
+
+## Forward pointers
+
+A `## What's next?` section carries its own rules, and they are the ones that
+have most often shipped wrong. Read `references/forward-pointers.md` before
+writing, editing, or reviewing one.
