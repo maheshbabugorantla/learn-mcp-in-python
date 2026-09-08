@@ -1,8 +1,8 @@
 """EpicMe MCP server — 02.tools / simple (solution)."""
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server import MCPServer
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="epicme",
     instructions="This lets you solve math problems.",
 )

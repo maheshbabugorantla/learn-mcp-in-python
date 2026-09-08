@@ -1,11 +1,11 @@
-from mcp.shared.memory import create_connected_server_and_client_session as connect
+from mcp.client import Client
 
 from server import mcp
 
 
 async def test_add_tool_is_listed():
     """The server should advertise an `add` tool with a description."""
-    async with connect(mcp) as client:
+    async with Client(mcp) as client:
         result = await client.list_tools()
 
     names = [tool.name for tool in result.tools]
@@ -25,10 +25,10 @@ async def test_add_tool_is_listed():
 
 async def test_add_tool_adds():
     """Calling `add` should come back with the sum in a readable sentence."""
-    async with connect(mcp) as client:
+    async with Client(mcp) as client:
         result = await client.call_tool("add", {"first_number": 1, "second_number": 2})
 
-    assert not result.isError, (
+    assert not result.is_error, (
         f"Calling `add` returned an error: {result.content[0].text}"
     )
 

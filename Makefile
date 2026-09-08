@@ -12,7 +12,7 @@ COURSES := mcp-fundamentals mcp-auth mcp-ui mcp-advanced-features
 MAKE_C := $(MAKE) --no-print-directory -C
 
 .DEFAULT_GOAL := help
-.PHONY: help check-uv install test test-problems test-fundamentals test-auth test-ui test-advanced demo clean
+.PHONY: help check-uv check-imports install test test-problems test-fundamentals test-auth test-ui test-advanced demo clean
 
 help: ## Show this help
 	@echo "Learn MCP in Python — repo-wide targets:"
@@ -27,6 +27,23 @@ check-uv: ## Check that uv is installed
 		echo "Install it with:  curl -LsSf https://astral.sh/uv/install.sh | sh"; \
 		echo "or see https://docs.astral.sh/uv/getting-started/installation/"; \
 		exit 1; }
+
+check-imports: ## Fail if any course imports private SDK API (mcp.*._*)
+	@hits=$$( { \
+		grep -rnE '(from|import)[[:space:]]+mcp[A-Za-z0-9_.]*\._' --include='*.py' $(COURSES); \
+		grep -rnE 'from[[:space:]]+mcp[A-Za-z0-9_.]*[[:space:]]+import[[:space:]]+_' --include='*.py' $(COURSES); \
+	} 2>/dev/null | grep -v '/\.venv/' | grep -v '__pycache__' | sort -u || true); \
+	if [ -n "$$hits" ]; then \
+		echo "Private MCP SDK imports are not allowed:"; \
+		printf '%s\n' "$$hits" | sed 's/^/  /'; \
+		echo; \
+		echo "Underscored names are private. They can disappear without a major-version"; \
+		echo "signal, and this repo teaches by example. Use the public API:"; \
+		echo "    from mcp.client import Client"; \
+		echo "    async with Client(mcp) as client:"; \
+		exit 1; \
+	fi; \
+	echo "no private SDK imports"
 
 install: check-uv ## Install every course's dependencies (uv sync)
 	@for c in $(COURSES); do echo "==> $$c"; $(MAKE_C) $$c install || exit 1; done

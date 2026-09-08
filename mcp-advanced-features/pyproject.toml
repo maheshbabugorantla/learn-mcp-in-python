@@ -6,7 +6,7 @@ requires-python = ">=3.10"
 # Runtime: the MCP SDK is the only dependency. pytest (a dev dependency) drives
 # the exercises; every advanced feature here is exercised in memory, with a fake
 # client supplying the LLM (sampling) and the human (elicitation).
-dependencies = ["mcp==1.28.1"]
+dependencies = ["mcp>=2.1,<3"]
 
 [dependency-groups]
 dev = [
