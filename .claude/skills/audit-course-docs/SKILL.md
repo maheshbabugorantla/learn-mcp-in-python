@@ -51,6 +51,10 @@ amendment.** Front-load the checking.
      or test that contradicts it, what changed.
    - **Checked and left alone**: every suspected defect that verification
      cleared, with why.
+   - **Spec currency**: claims that conflict with the protocol revision rather
+     than with this repo's code, kept separate because they usually cannot be
+     fixed in the same pass. See
+     `references/protocol-currency.md`.
    - Verification transcript (the two gate lines per course).
    - Observations that are not defects (pre-existing inconsistencies worth a
      separate change) go in the body, not the diff.

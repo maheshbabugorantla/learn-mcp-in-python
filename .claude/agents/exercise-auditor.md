@@ -1,6 +1,6 @@
 ---
 name: exercise-auditor
-description: Read-only auditor for one course's exercise documentation. Verifies every prose claim against the code and tests, checks narrative flow, and applies the course-voice tone tests. Reports findings; never edits. Fan out one per course.
+description: Read-only auditor for one course's exercise documentation. Verifies every prose claim against the code and tests, checks claims about MCP against the current protocol revision, checks narrative flow, and applies the course-voice tone tests. Reports findings; never edits. Fan out one per course.
 tools: Read, Glob, Grep, Bash
 ---
 
@@ -53,6 +53,17 @@ Audit the prose *at that ref* against the code *at that ref*.
 13. No block restates a list sitting a few lines above it, and topic-level
     blocks point forward, not at the current topic's own first step.
 
+**Spec currency** — prose against the protocol, not against this repo's code
+17. Read `.claude/skills/audit-course-docs/references/protocol-currency.md` and
+    check every claim about how MCP behaves. Your other checks compare prose to
+    the code here; this one compares it to the specification, and while the
+    courses pin an older SDK a sentence can match the code perfectly and still
+    teach something the protocol removed. Naming a feature as deprecated or as
+    history is correct and is not a finding.
+18. Report these under their own heading, **Spec currency**, never mixed into
+    the accuracy defects. They often cannot be fixed in the same pass, because
+    the replacement lesson may not exist yet.
+
 **Tone and prose**
 14. Read `.claude/skills/course-voice/SKILL.md` and audit against it directly,
     not from memory. It is the standard and it changes; a summary here would
@@ -77,5 +88,7 @@ Audit the prose *at that ref* against the code *at that ref*.
 Numbered findings, most severe first. Each: the file path and line, the exact
 offending text quoted, the `file:line` of the code/test that contradicts it,
 and a one-line suggested fix. Then the mandatory **Checked and left alone**
-section. Then one line per checklist area you ran that came back clean, so
-silence is distinguishable from not-looked.
+section, then a **Spec currency** section for claims that conflict with the
+protocol revision rather than with this repo's code. Then one line per checklist
+area you ran that came back clean, so silence is distinguishable from
+not-looked.
