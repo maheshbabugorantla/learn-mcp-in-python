@@ -55,13 +55,34 @@ demo.
 
 ## The four courses
 
-They're not a single line. **[mcp-fundamentals](mcp-fundamentals)** is the base.
-Then **[mcp-auth](mcp-auth)**, **[mcp-ui](mcp-ui)**, and
-**[mcp-advanced-features](mcp-advanced-features)** are three independent branches
-off it — do fundamentals first, then any of the three, in any order. None of them
-requires the others: auth gives the journal users, ui gives it a face, and
-advanced-features gives it the server-initiated parts of the protocol. They don't
-touch.
+They don't run in a single line. **[mcp-fundamentals](mcp-fundamentals)** is the
+base. **[mcp-advanced-features](mcp-advanced-features)**, **[mcp-auth](mcp-auth)**,
+and **[mcp-ui](mcp-ui)** are three independent branches off it — none of them
+requires either of the others to work, and you can do them in any order. Auth
+adds user accounts to the journal, ui gives it a face, and advanced-features
+gives it the server-initiated parts of the protocol — and none of that work
+overlaps, so doing one branch never touches the files another branch changes.
+
+If you want a suggested order, do them as listed here
+**fundamentals → advanced-features → auth → ui**. It's not required, but it front-loads the
+concepts each one depends on:
+
+- **fundamentals** comes first because the other three assume it: tools,
+  resources, and prompts are the vocabulary they're all built on — there's no
+  server-initiated request to send (advanced-features), no tool call to
+  authorize (auth), and no tool result to render (ui) until you know how to
+  define the tool in the first place.
+- **advanced-features** stays in the same simple world as fundamentals — stdio,
+  one user, no network — so it's the smallest step: you're learning new protocol
+  concepts (elicitation, sampling, progress, subscriptions) without also having
+  to deal with a new transport, auth, or a browser at the same time.
+- **auth** then adds a genuinely new axis of complexity — the network, OAuth,
+  per-user data — on top of a protocol you already know cold, so you're only
+  learning one new thing at a time instead of auth and advanced protocol
+  mechanics together.
+- **ui** is last because it's the furthest from protocol internals — it's about
+  rendering and a browser-side `postMessage` conversation, not the wire protocol
+  — so it works best as a capstone once the protocol itself is second nature.
 
 **[mcp-fundamentals](mcp-fundamentals)** — start here. Build an MCP server from
 nothing: a server that answers a ping, then tools the model can call, resources
@@ -72,29 +93,6 @@ over stdio, one user, no auth.
 cd mcp-fundamentals
 uv sync
 uv run pytest exercises/01.ping/01.problem.connect
-```
-
-**[mcp-ui](mcp-ui)** — a branch. Give the journal a face. The same tools now
-return **UI** — a tag card, a journal page, a full entry — that a UI-aware client
-renders instead of showing plain text. You learn the MCP-UI sub-spec: UI
-resources, the mimetype that says how to render them, and the `postMessage`
-conversation once they're on screen. No auth, no users — just a screen.
-
-```sh
-cd mcp-ui
-uv sync
-uv run pytest exercises/01.simple/01.problem.raw-html
-```
-
-**[mcp-auth](mcp-auth)** — the other branch. Take the same journal and put it on
-the internet with users in it. OAuth 2.1 metadata discovery, `WWW-Authenticate`,
-token introspection, per-user data scoping, and scopes — implemented by hand, so
-you know what the machinery does before you let a library do it for you.
-
-```sh
-cd mcp-auth
-uv sync
-uv run pytest exercises/01.discovery/01.problem.cors
 ```
 
 **[mcp-advanced-features](mcp-advanced-features)** — a branch. Basic MCP is
@@ -110,6 +108,29 @@ first.
 cd mcp-advanced-features
 uv sync
 uv run pytest exercises/02.elicitation/01.problem
+```
+
+**[mcp-auth](mcp-auth)** — another branch. Take the same journal and put it on
+the internet with users in it. OAuth 2.1 metadata discovery, `WWW-Authenticate`,
+token introspection, per-user data scoping, and scopes — implemented by hand, so
+you know what the machinery does before you let a library do it for you.
+
+```sh
+cd mcp-auth
+uv sync
+uv run pytest exercises/01.discovery/01.problem.cors
+```
+
+**[mcp-ui](mcp-ui)** — a branch. Give the journal a face. The same tools now
+return **UI** — a tag card, a journal page, a full entry — that a UI-aware client
+renders instead of showing plain text. You learn the MCP-UI sub-spec: UI
+resources, the mimetype that says how to render them, and the `postMessage`
+conversation once they're on screen. No auth, no users — just a screen.
+
+```sh
+cd mcp-ui
+uv sync
+uv run pytest exercises/01.simple/01.problem.raw-html
 ```
 
 Each course is a standalone project with its own `pyproject.toml` and its own
@@ -131,9 +152,9 @@ and check what it returns.
 ```
 .
 ├── mcp-fundamentals/        # the base course (own Makefile + pyproject + uv.lock)
+├── mcp-advanced-features/   # branch: elicitation, sampling, progress, changes
 ├── mcp-auth/                # branch: users + OAuth 2.1
 ├── mcp-ui/                  # branch: UI resources (+ a runnable browser demo)
-├── mcp-advanced-features/   # branch: elicitation, sampling, progress, changes
 ├── Makefile                 # repo-wide: install / test all / demo / clean
 └── .github/workflows/ci.yml # verifies every course's solutions on push
 ```
