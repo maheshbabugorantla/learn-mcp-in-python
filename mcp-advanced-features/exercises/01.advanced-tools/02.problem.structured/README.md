@@ -63,3 +63,9 @@ Swap in the pydantic return types and it fills in.
 
 Stuck? Diff against
 [`02.solution.structured`](../02.solution.structured/server.py).
+
+## What's next?
+
+Everything so far has made the server's answers easier to read. **Elicitation**
+changes who is talking — for the first time the server interrupts its own tool
+call to put a question to the user, and waits for the reply before it finishes.

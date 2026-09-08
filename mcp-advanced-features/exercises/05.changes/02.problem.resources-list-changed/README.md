@@ -52,3 +52,10 @@ Wire `send_resource_list_changed()` into both creates and the two tests go green
 
 Stuck? Diff against
 [`02.solution.resources-list-changed`](../02.solution.resources-list-changed/server.py).
+
+## What's next?
+
+"The list changed, go re-read it" is a blunt instrument when exactly one record
+moved. Next you narrow it to a single URI — and drop a level while you're at it,
+because FastMCP has no wrapper for subscribe and unsubscribe, so you register
+those on the low-level server underneath.

@@ -52,3 +52,9 @@ the raise for `send_tool_list_changed()`.
 
 Stuck? Diff against
 [`01.solution.list-changed`](../01.solution.list-changed/server.py).
+
+## What's next?
+
+Same move, different list. Next you announce that a *collection* changed rather
+than the tool roster: a client caching `epicme://entries` has no way to know that
+creating a row just made its copy wrong.

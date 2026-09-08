@@ -1,4 +1,4 @@
-"""EpicMe MCP server — tools/list_changed (solution).
+"""EpicMe MCP server — tools/list_changed (problem).
 
 A server's tool list isn't always fixed at startup. Sometimes a tool appears
 later — after a feature flag flips, a plugin loads, or the user unlocks

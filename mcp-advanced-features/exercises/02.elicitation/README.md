@@ -41,3 +41,9 @@ row should vanish) and once with a user who declines (the row should survive).
 ```sh
 uv run pytest exercises/02.elicitation/01.problem
 ```
+
+## What's next?
+
+**Sampling** is the same interruption pointed somewhere else. What carries over
+is the discipline: both are optional client capabilities, so a server that stops
+to ask has to keep working when the other side has no way to answer.

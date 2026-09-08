@@ -63,3 +63,9 @@ uv run pytest exercises/03.sampling/01.problem.simple
 
 The tests run your server and a fake client in the same process — no network, no
 model, nothing to start.
+
+## What's next?
+
+Two topics in, the server has interrupted itself to ask a person and to ask a
+model. **Long-running tasks** turns to the case where nobody is being asked
+anything — the server is simply busy, and the client deserves to know.

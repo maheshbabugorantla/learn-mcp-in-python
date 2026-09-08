@@ -56,7 +56,7 @@ def _tag_link(tag: Tag) -> ResourceLink:
 
 
 async def _confirmed(ctx: Context, message: str) -> bool:
-    """Ask the client's user to confirm. Absent elicitation support, proceed.
+    """Ask the client's user to confirm. Absent a clear yes, don't proceed.
 
     A client that can't elicit (no `elicitation` capability) would deadlock if we
     waited for an answer, so we treat a non-accept answer as "don't proceed".

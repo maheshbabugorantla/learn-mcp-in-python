@@ -65,3 +65,10 @@ rather than on a clean accept/decline. Wire up `ctx.elicit` and both the confirm
 and the decline paths light up.
 
 Stuck? Diff against [`01.solution`](../01.solution/server.py).
+
+## What's next?
+
+You just made a tool wait on a human. Next it waits on a model instead:
+`ctx.session.create_message` asks the client's LLM to write something and feeds
+the answer back into your own logic. The waiting is the same; what's on the
+other end of it is not.

@@ -1,4 +1,4 @@
-"""EpicMe MCP server — resource subscriptions (solution).
+"""EpicMe MCP server — resource subscriptions (problem).
 
 `resources/list_changed` says "the *collection* changed." Subscriptions are
 finer-grained: a client can say "I care about this *one* resource — tell me when

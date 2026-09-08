@@ -52,8 +52,9 @@ are `pass`; the third is a `raise NotImplementedError`.
 
 Two tests, both via a `message_handler`. The first subscribes to
 `epicme://entries/1`, updates entry 1, and asserts a `ResourceUpdatedNotification`
-for that URI arrived. The second subscribes to entry 1 but updates entry 2 —
-nobody is watching 2 — and asserts the server stays quiet.
+arrived — it collects notification *types*, so it never inspects the URI. The
+second is what actually proves your filter works: it subscribes to entry 1 but
+updates entry 2 — nobody is watching 2 — and asserts the server stays quiet.
 
 ```sh
 uv run pytest exercises/05.changes/03.problem.subscriptions
@@ -76,3 +77,9 @@ right reason — because `if uri in _subscribed` filtered entry 2 out.
 
 Stuck? Diff against
 [`03.solution.subscriptions`](../03.solution.subscriptions/server.py).
+
+## What's next?
+
+That's the last exercise in the course. Read
+`exercises/05.changes/FINISHED.md` — it names the throughline running under all
+five topics and lists what the course simplified on purpose.
