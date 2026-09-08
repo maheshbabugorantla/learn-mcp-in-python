@@ -43,8 +43,15 @@ that follows.
 This topic starts with the simplest content type there is: raw HTML. You build an
 HTML string, you tag it `text/html`, and the client renders it as-is.
 
-Run the exercise's tests from the repo root:
+Run the exercise's tests from the `mcp-ui` directory:
 
 ```sh
 uv run pytest exercises/01.simple/01.problem.raw-html
 ```
+
+## What's next?
+
+Raw HTML is the easy case and also the least cooperative one: it settles the
+fonts, the spacing and the colors before the client ever sees it. **Consistent
+UI** hands that authority back — your server describes what the card *is*, and
+the client renders it in its own house style.

@@ -58,3 +58,10 @@ So this course splits the work where the language boundary actually falls:
 The recurring idea still holds: a UI resource is your server saying "render
 this," and the mimeType is how the client knows what "this" is. Here "this" is a
 URL, and everything after the load is the iframe conversation the demo shows you.
+
+## What's next?
+
+Both steps here hand the client an address and stop there. **Interactive UI**
+picks up where that leaves off: once the page is loaded and on screen, it and the
+host still have plenty to say to each other, and that traffic is the whole
+subject of the next topic.

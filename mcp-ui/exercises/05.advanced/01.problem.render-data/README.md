@@ -77,3 +77,10 @@ uv run pytest exercises/05.advanced/01.problem.render-data
 
 Stuck? Diff your `server.py` against the sibling
 [`01.solution.render-data`](../01.solution.render-data/server.py).
+
+## What's next?
+
+That's the last exercise in the course. When it's green, read
+`exercises/05.advanced/FINISHED.md` — it collects the five ways this course said
+"render this" and is honest about which parts the demo faked, so you know what a
+real client would be doing for you.

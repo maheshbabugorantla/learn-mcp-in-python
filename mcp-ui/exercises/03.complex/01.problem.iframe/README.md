@@ -60,3 +60,9 @@ instead. That mismatch is exactly what an unbuilt UI resource looks like; it
 clears the moment you return the real one.
 
 Stuck? Diff against `../01.solution.iframe/`.
+
+## What's next?
+
+Next you will tell the host how big to make the frame *before* the page loads.
+Right now the client has a URL and no idea what shape the thing at the other end
+is, so it has to guess and then correct itself once the page can measure.

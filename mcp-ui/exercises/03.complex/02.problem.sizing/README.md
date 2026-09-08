@@ -51,3 +51,10 @@ uv run pytest exercises/03.complex/02.problem.sizing
 ```
 
 Stuck? Diff against `../02.solution.sizing/`.
+
+## What's next?
+
+That hint is the host's opening line in a conversation you haven't watched yet.
+**Interactive UI** has nothing to run — the rest is browser JavaScript — so it is
+a read-through of the demo, where the page reports its real size, asks the host
+to call tools, and gets answers back.

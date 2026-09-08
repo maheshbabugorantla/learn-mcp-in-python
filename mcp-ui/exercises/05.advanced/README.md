@@ -41,8 +41,14 @@ don't build anything for it here — watch it in the demo's message log when you
 click **View entry** — but it rounds out the picture: data flows both ways across
 that frame boundary.
 
-Run this topic's exercise from the repo root:
+Run this topic's exercise from the `mcp-ui` directory:
 
 ```sh
 uv run pytest exercises/05.advanced/01.problem.render-data
 ```
+
+## What's next?
+
+This is the last topic, and the exercise below is the last graded step. After it,
+`mcp-auth` and `mcp-advanced-features` branch off the fundamentals course in
+either order — neither one needs anything you built here.
