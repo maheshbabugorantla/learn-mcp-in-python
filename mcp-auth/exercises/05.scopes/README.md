@@ -33,7 +33,7 @@ deciding whether to click yes. [RFC 6749
 §3.3](https://datatracker.ietf.org/doc/html/rfc6749#section-3.3) defines them as
 a space-separated list of case-sensitive strings the server makes up, and that's
 genuinely all the spec has to say. The [MCP authorization
-spec](https://modelcontextprotocol.io/specification/draft/basic/authorization)
+spec](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization)
 builds on that with the discovery documents you already wrote.
 
 The interesting part is that scopes show up in three different places in your
@@ -53,3 +53,9 @@ uv run pytest exercises/05.scopes/01.problem.check-scopes
 
 No server to start — the tests run your app, and the authorization server, in
 process.
+
+## What's next?
+
+This is the last topic. After it, `mcp-ui` and `mcp-advanced-features` branch off
+the same fundamentals base in either order — neither one needs any of the auth
+machinery you built here.

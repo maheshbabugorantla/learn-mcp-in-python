@@ -94,3 +94,9 @@ The test creates an entry as Kody and one as Olivia, then has Kody ask for
 Olivia's entry by id. It has to fail.
 
 Stuck? Diff against `exercises/04.user/01.solution.token/`.
+
+## What's next?
+
+Next you put a name to that id, which means one more call out — and a detail
+worth pausing on when you get there: your server presents the *user's* token to
+make it, not one of its own.

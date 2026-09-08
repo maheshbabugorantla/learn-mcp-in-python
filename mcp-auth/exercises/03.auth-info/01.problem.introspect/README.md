@@ -81,3 +81,9 @@ all. Validation explodes, and the client gets a 500. Nothing here tests that yet
 The next step is where it gets fixed.
 
 Stuck? Diff against `exercises/03.auth-info/01.solution.introspect/`.
+
+## What's next?
+
+Next you handle the answer you haven't modelled yet. An expired token gets a
+perfectly valid reply from the introspection endpoint — just not the shape you
+told pydantic to expect, which reaches the caller as a 500 rather than a 401.

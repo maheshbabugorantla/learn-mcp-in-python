@@ -74,3 +74,10 @@ uv run pytest exercises/03.auth-info/01.problem.introspect
 One at a time matters here — every exercise has its own `auth.py` and `app.py`,
 and pytest can't import two modules with the same name at once. No server to
 start; the tests run your app and the authorization server in process.
+
+## What's next?
+
+**The user** is where authentication turns into authorization. These three steps
+end with the server certain about who is calling — and still handing every one
+of them the same journal. Knowing who somebody is and acting on it are two
+different pieces of work.

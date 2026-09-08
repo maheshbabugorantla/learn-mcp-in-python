@@ -71,3 +71,9 @@ uv run pytest exercises/01.discovery/03.problem.pr
 ```
 
 Stuck? Diff against `exercises/01.discovery/03.solution.pr/`.
+
+## What's next?
+
+Next, **Initiating auth** puts a lock on `/mcp`. Everything in this topic was
+paperwork — three documents, none of them enforcing anything yet. The next step
+is what starts sending people to read them.

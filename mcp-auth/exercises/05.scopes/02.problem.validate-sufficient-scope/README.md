@@ -86,3 +86,9 @@ uv run pytest exercises/05.scopes/02.problem.validate-sufficient-scope
 ```
 
 Stuck? Diff against `exercises/05.scopes/02.solution.validate-sufficient-scope/`.
+
+## What's next?
+
+Next you close the loop this course opened. The protected-resource document you
+wrote back in `01.discovery` is the first thing a client reads, and it has been
+silent about scopes the whole time. One key fixes that.

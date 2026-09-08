@@ -90,3 +90,9 @@ uv run pytest exercises/05.scopes/01.problem.check-scopes
 ```
 
 Stuck? Diff against `exercises/05.scopes/01.solution.check-scopes/`.
+
+## What's next?
+
+Next you ask the same question at the front door. A per-function check answers
+"may this token do *this*"; none of them answers "can this token do anything here
+at all", which is the one a client with the wrong scopes actually needs.
